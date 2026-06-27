@@ -1,4 +1,4 @@
-apiVersion: v0.1.0
+apiVersion: v0.2.0
 kind: ObservabilityResults
 id: 3d2b6e90-7a1c-4f5b-8e2d-1a9c4b6f0e23
 observedAt: "2025-12-25T18:00:00+01:00"

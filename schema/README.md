@@ -29,6 +29,7 @@ following section:
       "versions": {
         "<new_version>": "https://github.com/bitol-io/open-observability-results-standard/blob/main/schema/oors-json-schema-<new_version>.json",
         ...
+        "v0.2.0": "https://github.com/bitol-io/open-observability-results-standard/blob/main/schema/oors-json-schema-v0.2.0.json",
         "v0.1.0": "https://github.com/bitol-io/open-observability-results-standard/blob/main/schema/oors-json-schema-v0.1.0.json"
       }
     },

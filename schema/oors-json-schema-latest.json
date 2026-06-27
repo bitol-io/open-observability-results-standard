@@ -9,8 +9,8 @@
   "properties": {
     "apiVersion": {
       "type": "string",
-      "default": "v0.1.0",
-      "description": "Version of the OORS schema used. Indicates the version of the standard, e.g., `v0.1.0`."
+      "default": "v0.2.0",
+      "description": "Version of the OORS schema used. Indicates the version of the standard, e.g., `v0.2.0`."
     },
     "kind": {
       "type": "string",
@@ -72,6 +72,9 @@
       "items": {
         "$ref": "#/$defs/Result"
       }
+    },
+    "customProperties": {
+      "$ref": "#/$defs/CustomProperties"
     }
   },
   "$defs": {
@@ -98,6 +101,10 @@
           "type": "string",
           "enum": ["pass", "fail"],
           "description": "The outcome of the observation: `pass` or `fail`."
+        },
+        "relatesTo": {
+          "type": "string",
+          "description": "Optional reference to the element this result relates to in the linked contract, e.g., a path to a data quality rule or property in the ODCS/ODPS contract referenced by the top-level `contract` object."
         },
         "severity": {
           "type": "string",
@@ -151,6 +158,38 @@
         "message": {
           "type": "string",
           "description": "A human-readable message providing additional context about the observation."
+        },
+        "customProperties": {
+          "$ref": "#/$defs/CustomProperties"
+        }
+      }
+    },
+    "CustomProperties": {
+      "type": "array",
+      "description": "A list of key/value pairs for custom properties. Shared structure across the Bitol standards.",
+      "items": {
+        "$ref": "#/$defs/CustomProperty"
+      }
+    },
+    "CustomProperty": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["property", "value"],
+      "properties": {
+        "property": {
+          "type": "string",
+          "description": "The name of the key. Names should be in camel case—the same as if they were permanent properties in the standard."
+        },
+        "value": {
+          "description": "The value of the key."
+        },
+        "description": {
+          "type": "string",
+          "description": "Optional description of the custom property."
+        },
+        "id": {
+          "type": "string",
+          "description": "Optional unique identifier for the custom property, for stable references."
         }
       }
     }
