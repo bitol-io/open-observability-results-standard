@@ -31,7 +31,7 @@ Each entry in the `results` array is a single observation — either a `check` (
 | `measure`                    | Measure             | object         | No       | Object describing the measurement details.                                                                  |
 | `measure.metric`             | Metric              | string         | No       | The name of the metric being measured, e.g., `rowCount`, `age`, `latency`.                                  |
 | `measure.value`              | Value               | number / string| No       | The observed value of the metric.                                                                          |
-| `measure.threshold`          | Threshold           | object         | No       | The threshold criteria, e.g., `mustBe`, `mustBeLowerOrEqual` (following ODCS operator definitions).         |
+| `measure.threshold`          | Threshold           | object         | No       | The threshold criteria, e.g., `mustBe`, `mustBeLessThan` (following ODCS operator definitions).             |
 | `measure.unit`               | Unit                | string         | No       | The unit of measurement, e.g., `rows`, `seconds`, `percent`.                                                |
 | `message`                    | Message             | string         | No       | A human-readable message providing additional context about the observation.                                |
 | `customProperties`           | Custom Properties   | array          | No       | A list of key/value pairs for custom properties. See [Custom & Other Properties](custom-other-properties.md).|
@@ -49,13 +49,36 @@ When the top-level [`contract`](fundamentals.md) object is set, use `relatesTo` 
 relatesTo: schema/customers_tbl/properties/email/quality/dq_email_not_null
 ```
 
-## Example result
+## Minimal example
+
+A result requires only `id`, `type`, `name`, and `status`.
+
+```yaml
+- id: no_dup_rows
+  type: check
+  name: No duplicate rows
+  status: pass
+```
+
+```json
+{
+  "id": "no_dup_rows",
+  "type": "check",
+  "name": "No duplicate rows",
+  "status": "pass"
+}
+```
+
+## Full example
+
+A result using every field — a failing `check` linked to a contract rule, with a target, a measured value against a threshold, a message, and custom properties.
 
 ```yaml
 - id: dup_rows_myTable
   type: check
   name: No duplicate rows
   status: fail
+  relatesTo: schema/orders_tbl/quality/dq_no_duplicates
   severity: critical
   dimension: uniqueness
   target:
@@ -68,4 +91,38 @@ relatesTo: schema/customers_tbl/properties/email/quality/dq_email_not_null
       mustBe: 0
     unit: rows
   message: Multiple duplicate rows found in myTable!
+  customProperties:
+    - property: checkEngine
+      value: soda-core
+```
+
+```json
+{
+  "id": "dup_rows_myTable",
+  "type": "check",
+  "name": "No duplicate rows",
+  "status": "fail",
+  "relatesTo": "schema/orders_tbl/quality/dq_no_duplicates",
+  "severity": "critical",
+  "dimension": "uniqueness",
+  "target": {
+    "resourceType": "table",
+    "resourceIdentifier": "myTable"
+  },
+  "measure": {
+    "metric": "rowCount",
+    "value": 3,
+    "threshold": {
+      "mustBe": 0
+    },
+    "unit": "rows"
+  },
+  "message": "Multiple duplicate rows found in myTable!",
+  "customProperties": [
+    {
+      "property": "checkEngine",
+      "value": "soda-core"
+    }
+  ]
+}
 ```

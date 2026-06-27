@@ -14,28 +14,6 @@ The top level of an OORS message describes *when* and *by what* the observations
 
 [Back to TOC](README.md)
 
-## Example
-
-```yaml
-apiVersion: v0.2.0
-kind: ObservabilityResults
-id: 9f1c8a52-2b4e-4a6e-9d3e-7c2a1f0b4d11
-observedAt: "2025-12-25T17:00:00+01:00"
-source:
-  process: order-preprocessor-dbt
-  runID: "27a3de3d"
-  vendor: inhouse-build
-contract:
-  contractID: 53581432-6c55-4ba2-a65f-72344a91553a
-  standard: ODCS
-  version: 3.1.0
-results:
-  - id: dup_rows_myTable
-    type: check
-    name: No duplicate rows
-    status: fail
-```
-
 ## Fundamental fields
 
 | Key          | UX label    | Type              | Required | Description                                                                  |
@@ -71,3 +49,98 @@ results:
 | ------------------ | ----------------- | ----- | -------- | -------------------------------------------------------------------------------------------------- |
 | `results`          | Results           | array | Yes      | An array of results (at least one). Each entry is a [result](results.md) object (check or metric).  |
 | `customProperties` | Custom Properties | array | No       | A list of key/value pairs for custom properties. See [Custom & Other Properties](custom-other-properties.md). |
+
+## Minimal example
+
+Only the required fields: the envelope, `source.process`, and one result.
+
+```yaml
+apiVersion: v0.2.0
+kind: ObservabilityResults
+id: 9f1c8a52-2b4e-4a6e-9d3e-7c2a1f0b4d11
+observedAt: "2026-01-15T09:30:00Z"
+source:
+  process: nightly-quality-suite
+results:
+  - id: no_dup_rows
+    type: check
+    name: No duplicate rows
+    status: pass
+```
+
+```json
+{
+  "apiVersion": "v0.2.0",
+  "kind": "ObservabilityResults",
+  "id": "9f1c8a52-2b4e-4a6e-9d3e-7c2a1f0b4d11",
+  "observedAt": "2026-01-15T09:30:00Z",
+  "source": {
+    "process": "nightly-quality-suite"
+  },
+  "results": [
+    {
+      "id": "no_dup_rows",
+      "type": "check",
+      "name": "No duplicate rows",
+      "status": "pass"
+    }
+  ]
+}
+```
+
+## Full example
+
+A full envelope: `source` with all fields, a `contract` reference, two results, and `customProperties`. (See [Results](results.md) for the result fields.) The complete files are in [`examples/`](examples/README.md).
+
+```yaml
+apiVersion: v0.2.0
+kind: ObservabilityResults
+id: 3d2b6e90-7a1c-4f5b-8e2d-1a9c4b6f0e23
+observedAt: "2026-01-15T09:30:00Z"
+source:
+  process: order-processor-dbt
+  runID: build-4821
+  vendor: soda
+contract:
+  contractID: 53581432-6c55-4ba2-a65f-72344a91553a
+  standard: ODCS
+  version: 3.1.0
+results:
+  - id: dup_rows_myTable
+    type: check
+    name: No duplicate rows
+    status: fail
+  - id: freshness_myDataProduct
+    type: metric
+    name: Data should not be stale
+    status: pass
+customProperties:
+  - property: environment
+    value: production
+```
+
+```json
+{
+  "apiVersion": "v0.2.0",
+  "kind": "ObservabilityResults",
+  "id": "3d2b6e90-7a1c-4f5b-8e2d-1a9c4b6f0e23",
+  "observedAt": "2026-01-15T09:30:00Z",
+  "source": {
+    "process": "order-processor-dbt",
+    "runID": "build-4821",
+    "vendor": "soda"
+  },
+  "contract": {
+    "contractID": "53581432-6c55-4ba2-a65f-72344a91553a",
+    "standard": "ODCS",
+    "version": "3.1.0"
+  },
+  "results": [
+    { "id": "dup_rows_myTable", "type": "check", "name": "No duplicate rows", "status": "fail" },
+    { "id": "freshness_myDataProduct", "type": "metric", "name": "Data should not be stale", "status": "pass" }
+  ],
+  "customProperties": [
+    { "property": "environment", "value": "production" }
+  ]
+}
+```
