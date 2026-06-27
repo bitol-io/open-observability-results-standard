@@ -1,0 +1,45 @@
+apiVersion: v0.1.0
+kind: ObservabilityResults
+id: 3d2b6e90-7a1c-4f5b-8e2d-1a9c4b6f0e23
+observedAt: "2025-12-25T18:00:00+01:00"
+source:
+  process: order-processor-dbt
+  runID: "268e5b0f"
+  vendor: inhouse-build
+contract:
+  contractID: 53581432-6c55-4ba2-a65f-72344a91553a
+  standard: ODCS
+  version: 3.1.0
+results:
+  - id: dup_rows_myTable
+    type: check
+    name: No duplicate rows
+    status: fail
+    severity: critical
+    dimension: uniqueness
+    target:
+      resourceType: table
+      resourceIdentifier: myTable
+    measure:
+      metric: rowCount
+      value: 3
+      threshold:
+        mustBe: 0
+      unit: rows
+    message: Multiple duplicate rows found in myTable!
+  - id: freshness_myDataProduct
+    type: metric
+    name: Data should not be stale
+    status: pass
+    severity: high
+    dimension: timeliness
+    target:
+      resourceType: dataset
+      resourceIdentifier: myDataProduct
+    measure:
+      metric: age
+      value: 42
+      threshold:
+        mustBeLowerOrEqual: 60
+      unit: minutes
+    message: Data is fresh.

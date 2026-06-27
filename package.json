@@ -1,0 +1,29 @@
+{
+  "name": "open-observability-results-standard",
+  "version": "0.1.0",
+  "description": "Open Observability Results Standard (OORS) - A standard for exchanging data observability results",
+  "main": "schema/oors-json-schema-v0.1.0.json",
+  "scripts": {
+    "validate": "./scripts/validate-examples.sh",
+    "test": "./scripts/validate-examples.sh"
+  },
+  "keywords": [
+    "observability",
+    "json-schema",
+    "validation",
+    "oors",
+    "open-data"
+  ],
+  "author": "Bitol.io",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bitol-io/open-observability-results-standard.git"
+  },
+  "devDependencies": {
+    "ajv-cli": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+} 
