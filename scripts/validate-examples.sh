@@ -58,14 +58,14 @@ if [ ! -d "$examples_dir" ]; then
 fi
 
 # Find all YAML files in examples directory
-yaml_files=$(find "$examples_dir" -name "*.yaml" -o -name "*.yml" 2>/dev/null || true)
+yaml_files=$(find "$examples_dir" \( -name "*.yaml" -o -name "*.yml" -o -name "*.json" \) 2>/dev/null || true)
 
 if [ -z "$yaml_files" ]; then
-    echo -e "${YELLOW}No YAML files found in examples directory${NC}"
+    echo -e "${YELLOW}No example files found in examples directory${NC}"
     exit 0
 fi
 
-echo -e "${YELLOW}Found YAML files to validate:${NC}"
+echo -e "${YELLOW}Found example files to validate:${NC}"
 echo "$yaml_files" | while read -r file; do
     echo "  - $(basename "$file")"
 done

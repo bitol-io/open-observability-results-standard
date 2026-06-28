@@ -26,18 +26,30 @@ OORS can be extended with custom properties for vendor- or organization-specific
 | customProperties[].description  | string | Description       | No       | Optional description of the custom property.                                                                                          |
 | customProperties[].id           | string | ID                | No       | Optional unique identifier for the custom property, for stable references.                                                            |
 
-## Example
+## Minimal example
+
+A single key/value pair (only `property` and `value` are required).
 
 ```yaml
 customProperties:
   - property: environment
     value: production
-  - property: orchestrator
-    value: airflow
-    description: The scheduler that triggered this run.
 ```
 
-Custom properties may also be attached to an individual result, for example to record the engine that produced an observation:
+```json
+{
+  "customProperties": [
+    {
+      "property": "environment",
+      "value": "production"
+    }
+  ]
+}
+```
+
+## Full example
+
+Multiple entries using the optional `description` and `id`, plus custom properties attached to an individual result.
 
 ```yaml
 results:
@@ -50,4 +62,37 @@ results:
         value: soda-core
       - property: queryDurationMs
         value: 184
+customProperties:
+  - property: environment
+    value: production
+  - property: orchestrator
+    value: airflow
+    description: The scheduler that triggered this run.
+    id: cp-orchestrator
+```
+
+```json
+{
+  "results": [
+    {
+      "id": "completeness_customer_email",
+      "type": "check",
+      "name": "customer email completeness",
+      "status": "pass",
+      "customProperties": [
+        { "property": "checkEngine", "value": "soda-core" },
+        { "property": "queryDurationMs", "value": 184 }
+      ]
+    }
+  ],
+  "customProperties": [
+    { "property": "environment", "value": "production" },
+    {
+      "property": "orchestrator",
+      "value": "airflow",
+      "description": "The scheduler that triggered this run.",
+      "id": "cp-orchestrator"
+    }
+  ]
+}
 ```
