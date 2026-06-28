@@ -10,23 +10,13 @@ SPDX-License-Identifier: Apache-2.0
 
 # Custom & Other Properties
 
-OORS can be extended with custom properties for vendor- or organization-specific metadata that is not part of the standard.
+OORS can be extended with custom properties for vendor- or organization-specific metadata that is not part of the standard. `customProperties` is available at the top level of an OORS message and on each [result](results.md). The structure is shared across the Bitol standards and follows the [ODCS Custom & Other Properties structure](https://bitol-io.github.io/open-data-contract-standard/latest/custom-other-properties/).
 
 [Back to TOC](README.md)
 
-## Custom Properties
+## Example
 
-`customProperties` is available at the top level of an OORS message and on each [result](results.md). The structure is shared across the Bitol standards and follows the [ODCS Custom & Other Properties structure](https://bitol-io.github.io/open-data-contract-standard/latest/custom-other-properties/).
-
-| Key                             | Type   | UX label          | Required | Description                                                                                                                            |
-| ------------------------------- | ------ | ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| customProperties                | array  | Custom Properties | No       | A list of key/value pairs for custom properties.                                                                                     |
-| customProperties[].**property** | string | Property          | Yes      | The name of the key. Names should be in camel case—the same as if they were permanent properties in the standard.                    |
-| customProperties[].**value**    | any    | Value             | Yes      | The value of the key.                                                                                                                |
-| customProperties[].description  | string | Description       | No       | Optional description of the custom property.                                                                                          |
-| customProperties[].id           | string | ID                | No       | Optional unique identifier for the custom property, for stable references.                                                            |
-
-## Minimal example
+### Minimal
 
 A single key/value pair (only `property` and `value` are required).
 
@@ -47,7 +37,7 @@ customProperties:
 }
 ```
 
-## Full example
+### Full
 
 Multiple entries using the optional `description` and `id`, plus custom properties attached to an individual result.
 
@@ -96,3 +86,13 @@ customProperties:
   ]
 }
 ```
+
+## Field Descriptions
+
+| Key                             | Type   | UX label          | Required | Description                                                                                                       | Example          |
+| ------------------------------- | ------ | ----------------- | -------- | --------------------------------------------------------------------------------------------------------------- | ---------------- |
+| `customProperties`              | array  | Custom Properties | No       | A list of key/value pairs for custom properties.                                                                |                  |
+| `customProperties[].property`   | string | Property          | Yes      | The name of the key. Names should be in camel case—the same as if they were permanent properties in the standard.| `environment`    |
+| `customProperties[].value`      | any    | Value             | Yes      | The value of the key.                                                                                           | `production`     |
+| `customProperties[].description`| string | Description       | No       | Optional description of the custom property.                                                                    | `The scheduler.` |
+| `customProperties[].id`         | string | ID                | No       | Optional unique identifier for the custom property, for stable references.                                       | `cp-orchestrator`|
