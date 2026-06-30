@@ -9,6 +9,7 @@ This document tracks the history and evolution of the **Open Observability Resul
 # v0.2.0 - DRAFT
 
 * **Adds** `customProperties` — a list of key/value pairs (shared structure across the Bitol standards: `property`, `value`, optional `description` and `id`) at the top level and on each result, for vendor- or organization-specific extensions.
+* **Adds** optional `vendor` string on `customProperties` items, associating a custom property with a specific vendor, provider, or external system. SHOULD be a stable, lowercase identifier (`^[a-z0-9][a-z0-9-]*$`); not enforced, and tools MUST preserve unknown vendor values — [RFC 0035](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/oors-v1.0.0/0035-extensions.md), shared with ODCS v3.2.0 and ODPS v1.1.0 (slated for OORS v1.0.0).
 * **Adds** `relatesTo` on result objects — an optional reference to the element this result relates to in the linked contract (e.g., a path to a data quality rule or property in the referenced ODCS/ODPS contract).
 * Default `apiVersion` raised to `v0.2.0`.
 * Documentation expanded to match the ODCS/ODPS structure: per-section pages with front matter, a table-of-contents landing page, and a Custom & Other Properties page.

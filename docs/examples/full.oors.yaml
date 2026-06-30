@@ -57,3 +57,6 @@ customProperties:
     value: airflow
     description: The scheduler that triggered this run.
     id: cp-orchestrator
+  - property: catalogId
+    value: cat-987
+    vendor: zeenea
