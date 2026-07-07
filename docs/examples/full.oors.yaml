@@ -1,4 +1,4 @@
-apiVersion: v0.2.0
+apiVersion: v0.2.1
 kind: ObservabilityResults
 id: 3d2b6e90-7a1c-4f5b-8e2d-1a9c4b6f0e23
 observedAt: "2026-01-15T09:30:00Z"
@@ -6,6 +6,13 @@ source:
   process: order-processor-dbt
   runID: build-4821
   vendor: soda
+run:
+  state: completed
+  sequence: 7
+  progress:
+    current: 6
+    total: 6
+    unit: steps
 contract:
   contractID: 53581432-6c55-4ba2-a65f-72344a91553a
   standard: ODCS
