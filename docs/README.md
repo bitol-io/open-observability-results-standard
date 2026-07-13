@@ -22,6 +22,7 @@ An OORS message reports the *outcomes* of checks and metrics — pass/fail, meas
 * [Fundamentals](fundamentals.md) — the message envelope (`apiVersion`, `kind`, `id`, `observedAt`) plus the `source` and optional `contract` objects.
 * [Results](results.md) — the structure of an individual observation (`check` or `metric`).
 * [Custom & Other Properties](custom-other-properties.md) — extending OORS with `customProperties`.
+* [Variables](variables.md) — `${VAR_NAME}` interpolation for environment-specific values, resolved at runtime by tooling.
 * [Examples](examples/README.md) — complete OORS messages.
 
 ## Design goals

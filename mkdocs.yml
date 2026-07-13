@@ -60,6 +60,7 @@ nav:
       - Fundamentals: 'fundamentals.md'
       - Results: 'results.md'
       - Custom & Other Properties: 'custom-other-properties.md'
+      - Variables: 'variables.md'
   - Examples:
     - 'examples/README.md'
     - '...'
