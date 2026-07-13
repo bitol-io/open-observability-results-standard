@@ -16,3 +16,4 @@ Complete OORS messages, provided both as a **minimal** example (only the require
 | ------- | ---- | ---- |
 | Minimal — only required fields | [`minimal.oors.yaml`](minimal.oors.yaml) | [`minimal.oors.json`](minimal.oors.json) |
 | Full — every field, two results, contract & custom properties | [`full.oors.yaml`](full.oors.yaml) | [`full.oors.json`](full.oors.json) |
+| Variables — `${VAR_NAME}` / `${VAR_NAME:-default}` interpolation per RFC-0050 | [`variables.oors.yaml`](variables.oors.yaml) | [`variables.oors.json`](variables.oors.json) |
