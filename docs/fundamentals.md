@@ -12,6 +12,8 @@ SPDX-License-Identifier: Apache-2.0
 
 The top level of an OORS message describes *when* and *by what* the observations were made, optionally *which contract* they relate to, and carries the list of `results`.
 
+Any string value MAY contain `${VAR_NAME}` references resolved at runtime by tooling; see [Variables](variables.md).
+
 [Back to TOC](README.md)
 
 ## Example
