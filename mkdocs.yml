@@ -59,6 +59,7 @@ nav:
       - 'README.md'
       - Fundamentals: 'fundamentals.md'
       - Results: 'results.md'
+      - Run Lifecycle: 'run-lifecycle.md'
       - Custom & Other Properties: 'custom-other-properties.md'
       - Variables: 'variables.md'
   - Examples:

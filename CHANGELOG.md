@@ -6,6 +6,12 @@ image: "https://raw.githubusercontent.com/bitol-io/artwork/main/horizontal/color
 
 This document tracks the history and evolution of the **Open Observability Results Standard**.
 
+# v0.2.1 - DRAFT
+
+* **Adds** optional top-level `run` object — run lifecycle reporting: **terminal by default, progressive by choice**. A document without `run` (every pre-v0.2.1 document) is terminal: the authoritative record of its run. Producers of long-running executions can opt in to interim snapshots with `run.state: running`, plus optional `run.sequence` (monotonic ordering per `source.runID`) and `run.progress` (`current`/`total`/`unit`). `run.state: completed|aborted` marks a terminal document; a terminal document supersedes all interim documents sharing its `source.runID`. `source.runID` is required (schema-enforced) when `run.state` is `running`. `results[].status` semantics are unchanged — lifecycle is orthogonal to observation outcomes. See the new [Run Lifecycle](docs/run-lifecycle.md) page.
+* Default `apiVersion` raised to `v0.2.1`.
+* New `progressive` example (YAML + JSON); `full` example extended with the `run` object.
+
 # v0.2.0 - DRAFT
 
 * **Adds** `customProperties` — a list of key/value pairs (shared structure across the Bitol standards: `property`, `value`, optional `description` and `id`) at the top level and on each result, for vendor- or organization-specific extensions.
