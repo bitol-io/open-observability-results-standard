@@ -1,11 +1,11 @@
 {
-  "apiVersion": "v0.2.1",
+  "apiVersion": "v0.2.2",
   "kind": "ObservabilityResults",
   "id": "1c40b98e-5a7d-4d2e-9f31-8b6c2e0a4f77",
   "observedAt": "2026-07-07T20:15:51Z",
   "source": {
     "process": "imdb-silver",
-    "runID": "silver-1783398037701"
+    "runId": "silver-1783398037701"
   },
   "run": {
     "state": "running",

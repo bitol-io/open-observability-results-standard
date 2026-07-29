@@ -15,7 +15,7 @@ The Open Observability Results Standard (OORS) is a lightweight, tool-agnostic f
 
 An OORS message reports the *outcomes* of checks and metrics — pass/fail, measured values, threshold breaches — optionally linked to the data contract (ODCS/ODPS) that specified them. It deliberately does **not** carry raw metrics, traces, or logs.
 
-> **Status:** OORS is an early-stage standard (v0.2.1, draft) incubated within the Bitol TSC. Expect breaking changes until v1.0.0.
+> **Status:** OORS is an early-stage standard (v0.2.2, draft) incubated within the Bitol TSC. Expect breaking changes until v1.0.0.
 
 ## Table of Contents
 

@@ -11,7 +11,7 @@ NC='\033[0m'
 
 script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 project_root=$(dirname "$script_dir")
-json_schema_version=${JSON_SCHEMA_VERSION:-v0.2.1}
+json_schema_version=${JSON_SCHEMA_VERSION:-v0.2.2}
 num_failed_validation=0
 
 echo -e "${YELLOW}Open Observability Results Standard (OORS) Validation Script${NC}"

@@ -16,8 +16,8 @@
   "properties": {
     "apiVersion": {
       "type": "string",
-      "default": "v0.2.1",
-      "description": "Version of the OORS schema used. Indicates the version of the standard, e.g., `v0.2.1`."
+      "default": "v0.2.2",
+      "description": "Version of the OORS schema used. Indicates the version of the standard, e.g., `v0.2.2`."
     },
     "kind": {
       "type": "string",
@@ -45,7 +45,7 @@
           "type": "string",
           "description": "The name of the process (job, pipeline, etc.) that made the observations."
         },
-        "runID": {
+        "runId": {
           "type": "string",
           "description": "An optional unique identifier for the specific run/execution of the process (e.g., build ID, run ID, etc.)."
         },
@@ -70,12 +70,12 @@
             "completed",
             "aborted"
           ],
-          "description": "The lifecycle state of the run this document reports on. `running`: interim snapshot, more documents will follow for this `source.runID`. `completed`: terminal, the run finished and this document is its authoritative record. `aborted`: terminal, the run ended before producing its full results."
+          "description": "The lifecycle state of the run this document reports on. `running`: interim snapshot, more documents will follow for this `source.runId`. `completed`: terminal, the run finished and this document is its authoritative record. `aborted`: terminal, the run ended before producing its full results."
         },
         "sequence": {
           "type": "integer",
           "minimum": 0,
-          "description": "Optional monotonically increasing ordinal of this document within the run (per `source.runID`). Consumers SHOULD order documents by `sequence` when present, falling back to `observedAt`."
+          "description": "Optional monotonically increasing ordinal of this document within the run (per `source.runId`). Consumers SHOULD order documents by `sequence` when present, falling back to `observedAt`."
         },
         "progress": {
           "type": "object",
@@ -307,7 +307,7 @@
         "type": "object",
         "required": [
           "process",
-          "runID"
+          "runId"
         ]
       }
     }

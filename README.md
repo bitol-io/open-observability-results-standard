@@ -37,7 +37,7 @@ id: 9f1c8a52-2b4e-4a6e-9d3e-7c2a1f0b4d11
 observedAt: "2025-12-25T17:00:00+01:00"
 source:
   process: order-preprocessor-dbt
-  runID: "27a3de3d"
+  runId: "27a3de3d"
   vendor: inhouse-build
 results:
   - id: dup_rows_myTable
