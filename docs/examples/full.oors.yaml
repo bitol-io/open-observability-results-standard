@@ -14,7 +14,7 @@ run:
     total: 6
     unit: steps
 contract:
-  contractID: 53581432-6c55-4ba2-a65f-72344a91553a
+  contractId: 53581432-6c55-4ba2-a65f-72344a91553a
   standard: ODCS
   version: 3.1.0
 results:

@@ -8,7 +8,7 @@ This document tracks the history and evolution of the **Open Observability Resul
 
 # v0.2.2 - DRAFT
 
-* **Renames** `source.runID` to `source.runId`, following the Bitol camel-case naming convention. **Breaking**: `source` sets `additionalProperties: false`, so documents still using `runID` no longer validate against the v0.2.2 schema.
+* **Renames** `source.runID` to `source.runId` and `contract.contractID` to `contract.contractId`, following the Bitol camel-case naming convention. **Breaking**: `source` and `contract` set `additionalProperties: false`, so documents still using `runID` or `contractID` no longer validate against the v0.2.2 schema.
 * Default `apiVersion` raised to `v0.2.2`.
 
 # v0.2.1 - DRAFT

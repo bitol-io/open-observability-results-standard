@@ -72,7 +72,7 @@ source:
 run:
   state: completed
 contract:
-  contractID: 53581432-6c55-4ba2-a65f-72344a91553a
+  contractId: 53581432-6c55-4ba2-a65f-72344a91553a
   standard: ODCS
   version: 3.1.0
 results:
@@ -102,7 +102,7 @@ customProperties:
   },
   "run": { "state": "completed" },
   "contract": {
-    "contractID": "53581432-6c55-4ba2-a65f-72344a91553a",
+    "contractId": "53581432-6c55-4ba2-a65f-72344a91553a",
     "standard": "ODCS",
     "version": "3.1.0"
   },
@@ -130,7 +130,7 @@ customProperties:
 | `source.vendor`       | string            | Vendor            | No       | An optional field indicating the vendor or tool that produced the observations.                                           | `soda`                                 |
 | `run`                 | object            | Run               | No       | Run lifecycle object. Absent ⇒ the document is terminal. See [Run Lifecycle](run-lifecycle.md).                            |                                        |
 | `contract`            | object            | Contract          | No       | Object describing the contract that provided the specifications for the observations. Highly recommended for traceability.|                                        |
-| `contract.contractID` | string (UUID)     | Contract ID       | No       | A unique identifier identifying the specific contract (ODCS/ODPS) the observations are based on.                          | `53581432-6c55-4ba2-a65f-72344a91553a` |
+| `contract.contractId` | string (UUID)     | Contract ID       | No       | A unique identifier identifying the specific contract (ODCS/ODPS) the observations are based on.                          | `53581432-6c55-4ba2-a65f-72344a91553a` |
 | `contract.standard`   | string            | Standard          | No       | The standard followed by the contract.                                                                                   | `ODCS`                                 |
 | `contract.version`    | string            | Version           | No       | The version of the contract (not the standard).                                                                          | `3.1.0`                                |
 | `results`             | array             | Results           | Yes      | An array of results (at least one). Each entry is a [result](results.md) object (check or metric).                        |                                        |

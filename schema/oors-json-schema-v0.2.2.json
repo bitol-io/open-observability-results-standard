@@ -108,7 +108,7 @@
       "additionalProperties": false,
       "description": "Object describing the contract that provided the specifications for the observations. Optional but highly recommended for traceability and context. When provided, all observations in `results` are expected to be based on the specifications defined in that contract.",
       "properties": {
-        "contractID": {
+        "contractId": {
           "type": "string",
           "description": "A unique identifier (could be a UUID) identifying the specific contract (ODCS/ODPS) that provided the specifications for the observations."
         },
