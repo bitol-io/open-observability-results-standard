@@ -21,7 +21,7 @@ References MAY appear as a whole value or as a substring. A reference MAY carry 
 ```yaml
 source:
   process: nightly-quality-suite
-  runID: ${CI_PIPELINE_RUN_ID}
+  runId: ${CI_PIPELINE_RUN_ID}
 results:
   - id: no_dup_rows
     type: check

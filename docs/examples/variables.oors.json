@@ -5,7 +5,7 @@
   "observedAt": "2026-07-13T09:30:00Z",
   "source": {
     "process": "nightly-quality-suite",
-    "runID": "${CI_PIPELINE_RUN_ID}"
+    "runId": "${CI_PIPELINE_RUN_ID}"
   },
   "results": [
     {
