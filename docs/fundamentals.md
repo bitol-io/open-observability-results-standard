@@ -58,7 +58,7 @@ results:
 
 ### Full
 
-A full envelope: `source` with all fields, a `run` lifecycle object, a `contract` reference, results, and `customProperties`. (See [Results](results.md) for the result fields and [Run Lifecycle](run-lifecycle.md) for `run`.) The complete files are in [`examples/`](examples/README.md).
+A full envelope: `source` with all fields, a `run` lifecycle object, a `contract` reference (including the `server` it is served on), results, `tags`, and `customProperties`. (See [Results](results.md) for the result fields and [Run Lifecycle](run-lifecycle.md) for `run`.) The complete files are in [`examples/`](examples/README.md).
 
 ```yaml
 apiVersion: v0.8.0
@@ -75,6 +75,7 @@ contract:
   contractId: 53581432-6c55-4ba2-a65f-72344a91553a
   standard: ODCS
   version: 3.1.0
+  server: production
 results:
   - id: dup_rows_myTable
     type: check
@@ -84,6 +85,7 @@ results:
     type: metric
     name: Data should not be stale
     status: pass
+tags: ['finance', 'sox']
 customProperties:
   - property: environment
     value: production
@@ -104,12 +106,14 @@ customProperties:
   "contract": {
     "contractId": "53581432-6c55-4ba2-a65f-72344a91553a",
     "standard": "ODCS",
-    "version": "3.1.0"
+    "version": "3.1.0",
+    "server": "production"
   },
   "results": [
     { "id": "dup_rows_myTable", "type": "check", "name": "No duplicate rows", "status": "fail" },
     { "id": "freshness_myDataProduct", "type": "metric", "name": "Data should not be stale", "status": "pass" }
   ],
+  "tags": ["finance", "sox"],
   "customProperties": [
     { "property": "environment", "value": "production" }
   ]
@@ -133,7 +137,9 @@ customProperties:
 | `contract.contractId` | string (UUID)     | Contract ID       | No       | A unique identifier identifying the specific contract (ODCS/ODPS) the observations are based on.                          | `53581432-6c55-4ba2-a65f-72344a91553a` |
 | `contract.standard`   | string            | Standard          | No       | The standard followed by the contract.                                                                                   | `ODCS`                                 |
 | `contract.version`    | string            | Version           | No       | The version of the contract (not the standard).                                                                          | `3.1.0`                                |
+| `contract.server`     | string            | Server            | No       | The identifier of the server, as defined in the referenced contract (e.g., the `server` name in the ODCS `servers` section), against which the observations were made. A contract can be served on multiple servers; this field records which one the results apply to. | `production`                           |
 | `results`             | array             | Results           | Yes      | An array of results (at least one). Each entry is a [result](results.md) object (check or metric).                        |                                        |
+| `tags`                | array             | Tags              | No       | A list of tags for categorizing the message. See [Tags](tags.md).                                                        | `['finance', 'sox']`                   |
 | `customProperties`    | array             | Custom Properties | No       | A list of key/value pairs for custom properties. See [Custom & Other Properties](custom-other-properties.md).             |                                        |
 
 > **Note:** When a `contract` is provided, all observations in `results` are expected to be based on the specifications defined in that contract. Observations not related to the contract should be sent in separate OORS messages (without the `contract` object).

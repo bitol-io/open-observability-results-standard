@@ -119,6 +119,10 @@
         "version": {
           "type": "string",
           "description": "The version of the contract (not the standard), e.g., `1.0.0`, `2.0.0`, etc."
+        },
+        "server": {
+          "type": "string",
+          "description": "The identifier of the server, as defined in the referenced contract (e.g., the `server` name in the ODCS `servers` section), against which the observations were made, e.g., `production`. A contract can be served on multiple servers; this field records which one the results apply to."
         }
       }
     },
@@ -132,6 +136,9 @@
     },
     "customProperties": {
       "$ref": "#/$defs/CustomProperties"
+    },
+    "tags": {
+      "$ref": "#/$defs/Tags"
     }
   },
   "$defs": {
@@ -238,6 +245,9 @@
         },
         "customProperties": {
           "$ref": "#/$defs/CustomProperties"
+        },
+        "tags": {
+          "$ref": "#/$defs/Tags"
         }
       }
     },
@@ -281,6 +291,18 @@
             "soda"
           ]
         }
+      }
+    },
+    "Tags": {
+      "type": "array",
+      "description": "A list of tags that may be assigned to the elements (object or property); the tags keyword may appear at any level. Tags may be used to better categorize an element. For example, `finance`, `sensitive`, `employee_record`.",
+      "examples": [
+        "finance",
+        "sensitive",
+        "employee_record"
+      ],
+      "items": {
+        "type": "string"
       }
     }
   },

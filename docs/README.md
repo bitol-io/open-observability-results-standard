@@ -27,6 +27,7 @@ An OORS message reports the *outcomes* of checks and metrics — pass/fail, meas
 * [Results](results.md) — the structure of an individual observation (`check` or `metric`).
 * [Run Lifecycle](run-lifecycle.md) — terminal by default, progressive by choice: the optional `run` object for long-running executions.
 * [Custom & Other Properties](custom-other-properties.md) — extending OORS with `customProperties`.
+* [Tags](tags.md) — lightweight, free-form classification labels for the message and its results.
 * [Variables](variables.md) — `${VAR_NAME}` interpolation for environment-specific values, resolved at runtime by tooling.
 * [Examples](examples/README.md) — complete OORS messages.
 

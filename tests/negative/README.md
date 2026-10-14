@@ -17,6 +17,7 @@ says. The header comment in each file names the specific violation.
 | [`invalid-status.oors.yaml`](invalid-status.oors.yaml) | `status` outside the permitted set (`pass`, `fail`, `warn`, `error`, `skip`). |
 | [`missing-results.oors.yaml`](missing-results.oors.yaml) | Required top-level `results` array omitted. |
 | [`running-without-runid.oors.yaml`](running-without-runid.oors.yaml) | `run.state: running` without the `source.runId` the schema requires for interim snapshots. |
+| [`invalid-tags.oors.yaml`](invalid-tags.oors.yaml) | `tags` given as a bare string instead of an array of strings. |
 
 Run them with the same script CI uses:
 
