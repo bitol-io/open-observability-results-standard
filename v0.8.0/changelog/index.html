@@ -601,6 +601,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../variables/" class="md-nav__link">
         
   
@@ -1010,10 +1038,13 @@
 <h1 id="v080-draft">v0.8.0 - DRAFT</h1>
 <ul>
 <li><strong>Approves <a href="https://github.com/bitol-io/tsc/blob/main/rfcs/approved/oors-v0.8.0/0018-oors.md">RFC-0018</a> — Open Observability Results Standard</strong>, the founding RFC, approved by the TSC on 2026-10-14. OORS is no longer an implementation of an open draft: it is now the formal consequence of an approved RFC.</li>
+<li><strong>Adds</strong> optional <code>contract.server</code> — the identifier of the server, as defined in the referenced contract (e.g., the <code>server</code> name in the ODCS <code>servers</code> section), against which the observations were made. A contract can be served on multiple servers (e.g., <code>production</code>, <code>dev</code>); this field records which one the results apply to. Non-breaking: the field is optional. Recreates the contribution made in <a href="https://github.com/bitol-io/open-observability-results-standard/pull/8">#8</a> by <a href="https://github.com/jochenchrist">@jochenchrist</a> on top of v0.8.0.</li>
+<li><strong>Adds</strong> <code>tags</code> — the shared Bitol structure for free-form classification labels (an array of strings), available at the top level and on each result. See the new <a href="../tags/">Tags</a> page. Non-breaking: the field is optional.</li>
 <li><strong>Extends <code>results[].status</code></strong> to the five outcomes the RFC defines: <code>pass</code>, <code>fail</code>, <code>warn</code> (executed, breached a soft/warning threshold), <code>error</code> (could <strong>not</strong> be evaluated — verdict unknown; e.g. the query failed or the source was unreachable) and <code>skip</code> (intentionally not run). The schema previously permitted only <code>pass</code> and <code>fail</code>. <code>error</code> is deliberately distinct from <code>fail</code>: a failure is a known-bad verdict, an <code>error</code> is the <em>absence</em> of a verdict and must not be counted as a failure. <strong>Non-breaking</strong> — this widens an enum. See <a href="../results/#status-values">Status values</a>.</li>
 <li>Documents <code>severity</code> as <strong>orthogonal</strong> to <code>status</code>: <code>status</code> is the runtime outcome, <code>severity</code> is the definition-time importance of the check. The two compose — a <code>critical</code>-severity check with <code>status: error</code> is the loudest possible alert.</li>
 <li>Default <code>apiVersion</code> raised to <code>v0.8.0</code>.</li>
 <li>New <code>statuses</code> example (YAML + JSON) exercising all five outcomes, and the first negative-test fixtures under <code>tests/negative/</code> — invalid documents the schema must reject — wired into <code>scripts/validate-examples.sh</code>.</li>
+<li>New <a href="../tags/">Tags</a> documentation page, mirroring the ODCS page; <a href="../custom-other-properties/">Custom &amp; Other Properties</a> restructured to align with ODCS. The <code>full</code> example gains <code>contract.server</code> and <code>tags</code>.</li>
 </ul>
 <h1 id="v022-draft">v0.2.2 - DRAFT</h1>
 <ul>

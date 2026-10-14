@@ -20,7 +20,8 @@
   "contract": {
     "contractId": "53581432-6c55-4ba2-a65f-72344a91553a",
     "standard": "ODCS",
-    "version": "3.1.0"
+    "version": "3.1.0",
+    "server": "production"
   },
   "results": [
     {
@@ -77,6 +78,7 @@
       "message": "Data is fresh."
     }
   ],
+  "tags": ["finance", "sox"],
   "customProperties": [
     {
       "property": "environment",

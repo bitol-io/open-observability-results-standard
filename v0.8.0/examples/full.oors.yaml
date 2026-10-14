@@ -17,6 +17,7 @@ contract:
   contractId: 53581432-6c55-4ba2-a65f-72344a91553a
   standard: ODCS
   version: 3.1.0
+  server: production
 results:
   - id: dup_rows_myTable
     type: check
@@ -57,6 +58,7 @@ results:
         mustBeLessThan: 60
       unit: minutes
     message: Data is fresh.
+tags: ['finance', 'sox']
 customProperties:
   - property: environment
     value: production
