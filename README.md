@@ -30,7 +30,8 @@ OORS focuses on clarity, portability, and ease of implementation, letting teams 
 
 The JSON Schema lives in [`schema/`](schema/). Files using the `.oors.yaml` extension are auto-detected as OORS.
 
-A reader-friendly version of the standard will be available on its dedicated site once OORS is released publicly.
+A reader-friendly version of the standard is published at
+<https://bitol-io.github.io/open-observability-results-standard/>.
 
 ## Example
 
