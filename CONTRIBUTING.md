@@ -18,11 +18,14 @@ Thank you for your interest in contributing to Open Observability Results Standa
 `main` is protected by a repository rule that requires changes to land through a **pull request** —
 direct pushes to `main` are rejected.
 
-Reviews are not required. Any TSC member with write access can merge their own pull request
-immediately; a second reviewer is welcome but never a gate. `main` cannot be force-pushed or deleted.
+Reviews are not required. Any TSC member with write access can merge their own pull request as soon as
+the checks below are green; a second reviewer is welcome but never a gate. `main` cannot be
+force-pushed or deleted, and pull requests are merged with a **merge commit** — `main` does not accept
+squash or rebase merges.
 
-The `validate-examples` workflow runs on every pull request and verifies the examples against the
-schema. It is advisory: a red run should be understood, not ignored.
+The `validate-examples` workflow runs on every pull request and verifies every example against the
+JSON schema, and asserts that the deliberately-invalid fixtures under `tests/negative/` are rejected.
+It is a **required check**: a pull request cannot be merged until it passes.
 
 Documentation is published automatically from `main` to
 <https://bitol-io.github.io/open-observability-results-standard/>.

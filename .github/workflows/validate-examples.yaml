@@ -9,7 +9,8 @@ on:
     branches: ["*"]
 
 jobs:
-  deploy:
+  validate:
+    name: validate-examples
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
