@@ -15,7 +15,11 @@ The Open Observability Results Standard (OORS) is a lightweight, tool-agnostic f
 
 An OORS message reports the *outcomes* of checks and metrics — pass/fail, measured values, threshold breaches — optionally linked to the data contract (ODCS/ODPS) that specified them. It deliberately does **not** carry raw metrics, traces, or logs.
 
-> **Status:** OORS is an early-stage standard (v0.2.2, draft) incubated within the Bitol TSC. Expect breaking changes until v1.0.0.
+> ## WORK IN PROGRESS — NOT READY FOR PRODUCTION
+>
+> OORS is a **draft standard** (v0.8.0), published early so the community can see it and shape it. It is
+> **not** a released standard. Expect **breaking changes in every version until v1.0.0**, incomplete areas,
+> and open questions still marked TBD in the defining RFC. Do not build production systems against it.
 
 ## Table of Contents
 
@@ -33,4 +37,4 @@ An OORS message reports the *outcomes* of checks and metrics — pass/fail, meas
 * **Contract-aware** — optional, first-class linkage to ODCS/ODPS IDs so data products can expose their health consistently.
 * **Result-centric** — carries only the outcomes of checks (pass/fail, measured values, breaches), not raw metrics or traces.
 
-OORS is defined by [RFC-0018](https://github.com/bitol-io/tsc/blob/main/rfcs/0018-oors.md) and is part of the [Bitol](https://bitol.io) family of standards, alongside [ODCS](https://github.com/bitol-io/open-data-contract-standard) and [ODPS](https://github.com/bitol-io/open-data-product-standard).
+OORS is defined by [RFC-0018](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/oors-v0.8.0/0018-oors.md), approved by the TSC on 2026-10-14, and is part of the [Bitol](https://bitol.io) family of standards, alongside [ODCS](https://github.com/bitol-io/open-data-contract-standard) and [ODPS](https://github.com/bitol-io/open-data-product-standard).

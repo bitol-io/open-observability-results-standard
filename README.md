@@ -9,7 +9,11 @@ The **Open Observability Results Standard (OORS)** provides an easy, lightweight
 
 OORS focuses on clarity, portability, and ease of implementation, letting teams communicate operational outcomes — such as data quality checks, freshness, latency, and SLA breaches — without requiring deep observability expertise or complex infrastructure. As an open format developed within the [Bitol](https://bitol.io) community, OORS is human-readable and follows the same philosophy as [ODCS](https://github.com/bitol-io/open-data-contract-standard) and [ODPS](https://github.com/bitol-io/open-data-product-standard), integrating naturally into existing data workflows.
 
-> **Status:** OORS is an early-stage standard (v0.1.0, draft). It is being incubated within the Bitol TSC. Expect breaking changes until v1.0.0.
+> ## WORK IN PROGRESS — NOT READY FOR PRODUCTION
+>
+> OORS is a **draft standard**, published early so the community can see it and shape it. It is **not** a
+> released standard. Expect **breaking changes in every version until v1.0.0**, incomplete areas, and open
+> questions still marked TBD in the defining RFC. Do not build production systems against it.
 
 ## Design goals
 
@@ -31,7 +35,7 @@ A reader-friendly version of the standard will be available on its dedicated sit
 ## Example
 
 ```yaml
-apiVersion: v0.1.0
+apiVersion: v0.8.0
 kind: ObservabilityResults
 id: 9f1c8a52-2b4e-4a6e-9d3e-7c2a1f0b4d11
 observedAt: "2025-12-25T17:00:00+01:00"
@@ -60,7 +64,7 @@ results:
 
 ## Contributing
 
-OORS is governed by the Bitol Technical Steering Committee (TSC). See [CONTRIBUTING.md](CONTRIBUTING.md) and the [TSC contributing guidelines](https://github.com/bitol-io/tsc/blob/main/CONTRIBUTING.md). The defining RFC is [RFC-0018 (OORS)](https://github.com/bitol-io/tsc/blob/main/rfcs/0018-oors.md).
+OORS is governed by the Bitol Technical Steering Committee (TSC). See [CONTRIBUTING.md](CONTRIBUTING.md) and the [TSC contributing guidelines](https://github.com/bitol-io/tsc/blob/main/CONTRIBUTING.md). The defining RFC is [RFC-0018 (OORS)](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/oors-v0.8.0/0018-oors.md), approved by the TSC on 2026-10-14.
 
 ## License
 

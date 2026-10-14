@@ -1,0 +1,21 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+#
+# NEGATIVE TEST - this document MUST fail schema validation.
+# Violation: `run.state: running` marks an interim snapshot, which cannot be
+# ordered or superseded without a `source.runId`. The schema requires
+# `source.runId` whenever `run.state` is `running`.
+
+apiVersion: v0.8.0
+kind: ObservabilityResults
+id: 9e2b5d30-7c41-4a68-b093-1f8d6e4a2c57
+observedAt: "2026-10-14T06:00:00Z"
+source:
+  process: imdb-silver
+run:
+  state: running
+results:
+  - id: rows_title_alias
+    type: metric
+    name: title_alias
+    status: pass

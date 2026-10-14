@@ -1,0 +1,13 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+#
+# NEGATIVE TEST - this document MUST fail schema validation.
+# Violation: the required top-level `results` array is absent. OORS requires
+# at least one result per message.
+
+apiVersion: v0.8.0
+kind: ObservabilityResults
+id: 4a8c1e67-2f93-4b0d-8e51-7c6a3d9f2b08
+observedAt: "2026-10-14T06:00:00Z"
+source:
+  process: nightly-quality-suite
