@@ -23,7 +23,7 @@ Any string value MAY contain `${VAR_NAME}` references resolved at runtime by too
 Only the required fields: the envelope, `source.process`, and one result.
 
 ```yaml
-apiVersion: v0.2.2
+apiVersion: v0.8.0
 kind: ObservabilityResults
 id: 9f1c8a52-2b4e-4a6e-9d3e-7c2a1f0b4d11
 observedAt: "2026-01-15T09:30:00Z"
@@ -38,7 +38,7 @@ results:
 
 ```json
 {
-  "apiVersion": "v0.2.2",
+  "apiVersion": "v0.8.0",
   "kind": "ObservabilityResults",
   "id": "9f1c8a52-2b4e-4a6e-9d3e-7c2a1f0b4d11",
   "observedAt": "2026-01-15T09:30:00Z",
@@ -61,7 +61,7 @@ results:
 A full envelope: `source` with all fields, a `run` lifecycle object, a `contract` reference, results, and `customProperties`. (See [Results](results.md) for the result fields and [Run Lifecycle](run-lifecycle.md) for `run`.) The complete files are in [`examples/`](examples/README.md).
 
 ```yaml
-apiVersion: v0.2.2
+apiVersion: v0.8.0
 kind: ObservabilityResults
 id: 3d2b6e90-7a1c-4f5b-8e2d-1a9c4b6f0e23
 observedAt: "2026-01-15T09:30:00Z"
@@ -91,7 +91,7 @@ customProperties:
 
 ```json
 {
-  "apiVersion": "v0.2.2",
+  "apiVersion": "v0.8.0",
   "kind": "ObservabilityResults",
   "id": "3d2b6e90-7a1c-4f5b-8e2d-1a9c4b6f0e23",
   "observedAt": "2026-01-15T09:30:00Z",
@@ -120,7 +120,7 @@ customProperties:
 
 | Key                   | Type              | UX label          | Required | Description                                                                                                                | Example                                |
 | --------------------- | ----------------- | ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| `apiVersion`          | string            | API Version       | Yes      | Version of the OORS schema used.                                                                                          | `v0.2.2`                               |
+| `apiVersion`          | string            | API Version       | Yes      | Version of the OORS schema used.                                                                                          | `v0.8.0`                               |
 | `kind`                | string            | Kind              | Yes      | The type of OORS object. For OORS, always `ObservabilityResults`.                                                         | `ObservabilityResults`                 |
 | `id`                  | string (UUID)     | ID                | Yes      | A unique identifier (could be a UUID) identifying the observability results.                                              | `9f1c8a52-2b4e-4a6e-9d3e-7c2a1f0b4d11` |
 | `observedAt`          | string (ISO 8601) | Observed At       | Yes      | The moment in time when the observations were done (ISO 8601 format).                                                     | `2026-01-15T09:30:00Z`                 |

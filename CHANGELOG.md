@@ -6,6 +6,14 @@ image: "https://raw.githubusercontent.com/bitol-io/artwork/main/horizontal/color
 
 This document tracks the history and evolution of the **Open Observability Results Standard**.
 
+# v0.8.0 - DRAFT
+
+* **Approves [RFC-0018](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/oors-v0.8.0/0018-oors.md) — Open Observability Results Standard**, the founding RFC, approved by the TSC on 2026-10-14. OORS is no longer an implementation of an open draft: it is now the formal consequence of an approved RFC.
+* **Extends `results[].status`** to the five outcomes the RFC defines: `pass`, `fail`, `warn` (executed, breached a soft/warning threshold), `error` (could **not** be evaluated — verdict unknown; e.g. the query failed or the source was unreachable) and `skip` (intentionally not run). The schema previously permitted only `pass` and `fail`. `error` is deliberately distinct from `fail`: a failure is a known-bad verdict, an `error` is the *absence* of a verdict and must not be counted as a failure. **Non-breaking** — this widens an enum. See [Status values](docs/results.md#status-values).
+* Documents `severity` as **orthogonal** to `status`: `status` is the runtime outcome, `severity` is the definition-time importance of the check. The two compose — a `critical`-severity check with `status: error` is the loudest possible alert.
+* Default `apiVersion` raised to `v0.8.0`.
+* New `statuses` example (YAML + JSON) exercising all five outcomes, and the first negative-test fixtures under `tests/negative/` — invalid documents the schema must reject — wired into `scripts/validate-examples.sh`.
+
 # v0.2.2 - DRAFT
 
 * **Renames** `source.runID` to `source.runId` and `contract.contractID` to `contract.contractId`, following the Bitol camel-case naming convention. **Breaking**: `source` and `contract` set `additionalProperties: false`, so documents still using `runID` or `contractID` no longer validate against the v0.2.2 schema.

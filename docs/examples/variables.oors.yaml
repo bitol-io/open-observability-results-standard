@@ -5,7 +5,7 @@
 # resolved at runtime by tooling. The POSIX ${VAR_NAME:-default} form supplies
 # an inline default used when the variable is unset or empty.
 
-apiVersion: v0.2.0
+apiVersion: v0.8.0
 kind: ObservabilityResults
 id: 5a7e2c91-4d3b-4f8a-b6c5-1e0d9f2a8b34
 observedAt: "2026-07-13T09:30:00Z"

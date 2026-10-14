@@ -1,5 +1,10 @@
 # History
 
+## Version 0.8.x
+OORS becomes the formal consequence of [RFC-0018](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/oors-v0.8.0/0018-oors.md), approved by the Bitol TSC on 2026-10-14. This release consolidates the v0.1.x–v0.2.x drafts and completes the RFC by extending `results[].status` to the five documented outcomes.
+
+OORS v0.8.0 is currently in development.
+
 ## Version 0.2.x
 Adds `customProperties` (the shared Bitol key/value extension structure) and `relatesTo` on results (linking an observation back to a specific element of the referenced contract), and expands the documentation to match the ODCS/ODPS structure.
 

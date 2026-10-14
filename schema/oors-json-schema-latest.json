@@ -16,8 +16,8 @@
   "properties": {
     "apiVersion": {
       "type": "string",
-      "default": "v0.2.2",
-      "description": "Version of the OORS schema used. Indicates the version of the standard, e.g., `v0.2.2`."
+      "default": "v0.8.0",
+      "description": "Version of the OORS schema used. Indicates the version of the standard, e.g., `v0.8.0`."
     },
     "kind": {
       "type": "string",
@@ -58,7 +58,7 @@
     "run": {
       "type": "object",
       "additionalProperties": false,
-      "description": "Optional run lifecycle object. When absent, the document is terminal: the authoritative record of a run (pre-v0.2.1 behavior). When present with `state: running`, the document is an interim snapshot of a run still in progress.",
+      "description": "Optional run lifecycle object. When absent, the document is terminal: the authoritative record of a run. When present with `state: running`, the document is an interim snapshot of a run still in progress.",
       "required": [
         "state"
       ],
@@ -166,9 +166,12 @@
           "type": "string",
           "enum": [
             "pass",
-            "fail"
+            "fail",
+            "warn",
+            "error",
+            "skip"
           ],
-          "description": "The outcome of the observation: `pass` or `fail`."
+          "description": "The outcome of the observation: `pass` (executed, met expectation), `fail` (executed, breached a hard threshold), `warn` (executed, breached a soft/warning threshold), `error` (could not be evaluated - verdict unknown; e.g. the query failed or the source was unreachable), or `skip` (intentionally not run). `error` is distinct from `fail`: a failure is a known-bad verdict, an error is the absence of a verdict and must not be counted as a failure."
         },
         "relatesTo": {
           "type": "string",
@@ -176,7 +179,7 @@
         },
         "severity": {
           "type": "string",
-          "description": "The severity level of the observation, e.g., `critical`, `high`, `medium`, `low`, `warning`, etc."
+          "description": "The severity level of the observation, e.g., `critical`, `high`, `medium`, `low`, `warning`, etc. Severity is orthogonal to `status`: `status` is the runtime outcome, `severity` is the definition-time importance of the check."
         },
         "dimension": {
           "type": "string",

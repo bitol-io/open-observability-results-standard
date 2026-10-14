@@ -11,7 +11,7 @@ NC='\033[0m'
 
 script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 project_root=$(dirname "$script_dir")
-json_schema_version=${JSON_SCHEMA_VERSION:-v0.2.2}
+json_schema_version=${JSON_SCHEMA_VERSION:-v0.8.0}
 num_failed_validation=0
 
 echo -e "${YELLOW}Open Observability Results Standard (OORS) Validation Script${NC}"
@@ -82,6 +82,26 @@ for file in $yaml_files; do
 done
 
 echo ""
+echo -e "${YELLOW}Validating negative-test fixtures (these MUST be rejected)${NC}"
+
+negative_dir="${project_root}/tests/negative"
+
+if [ -d "$negative_dir" ]; then
+    negative_files=$(find "$negative_dir" \( -name "*.yaml" -o -name "*.yml" -o -name "*.json" \) 2>/dev/null || true)
+
+    for file in $negative_files; do
+        if ajv validate --spec=draft2019 --all-errors -c ajv-formats -s "$schema_file" -d "$file" >/dev/null 2>&1; then
+            echo -e "${RED}UNEXPECTEDLY VALID (schema too lax), file=$(basename "$file")${NC}"
+            num_failed_validation=$((num_failed_validation+1))
+        else
+            echo -e "${GREEN}Correctly rejected, file=$(basename "$file")${NC}"
+        fi
+    done
+else
+    echo -e "${YELLOW}No negative tests found at $negative_dir${NC}"
+fi
+
+echo ""
 echo "=================================================="
 echo -e "${YELLOW}Validation Summary:${NC}"
 echo -e "${YELLOW}Total failed=${num_failed_validation}${NC}"
@@ -92,4 +112,4 @@ if [ "${num_failed_validation}" -gt 0 ]; then
 else
     echo -e "${GREEN}✓ All files are valid!${NC}"
     exit 0
-fi 
+fi

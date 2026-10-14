@@ -1,0 +1,91 @@
+{
+  "apiVersion": "v0.8.0",
+  "kind": "ObservabilityResults",
+  "id": "7b1e4c02-9d38-4a17-8f56-2c3b7e0d9a41",
+  "observedAt": "2026-10-14T06:00:00Z",
+  "source": {
+    "process": "nightly-quality-suite",
+    "runId": "nightly-20261014"
+  },
+  "results": [
+    {
+      "id": "dup_rows_myTable",
+      "type": "check",
+      "name": "No duplicate rows",
+      "status": "fail",
+      "severity": "critical",
+      "dimension": "uniqueness",
+      "target": {
+        "resourceType": "table",
+        "resourceIdentifier": "myTable"
+      },
+      "measure": {
+        "metric": "rowCount",
+        "value": 3,
+        "threshold": {
+          "mustBe": 0
+        },
+        "unit": "rows"
+      },
+      "message": "Multiple duplicate rows found in myTable!"
+    },
+    {
+      "id": "freshness_myDataProduct",
+      "type": "metric",
+      "name": "Data should not be stale",
+      "status": "warn",
+      "severity": "high",
+      "dimension": "timeliness",
+      "target": {
+        "resourceType": "dataset",
+        "resourceIdentifier": "myDataProduct.orders"
+      },
+      "measure": {
+        "metric": "age",
+        "value": 52,
+        "threshold": {
+          "mustBeLessThan": 45
+        },
+        "unit": "minutes"
+      },
+      "message": "Data is older than the soft target of 45 minutes."
+    },
+    {
+      "id": "schema_conformance_orders",
+      "type": "check",
+      "name": "Orders conform to the contract schema",
+      "status": "error",
+      "severity": "critical",
+      "dimension": "validity",
+      "target": {
+        "resourceType": "table",
+        "resourceIdentifier": "orders"
+      },
+      "message": "Could not evaluate - the warehouse was unreachable. Verdict unknown, so this is not counted as a failure."
+    },
+    {
+      "id": "pii_scan_orders",
+      "type": "check",
+      "name": "No PII in the orders extract",
+      "status": "skip",
+      "severity": "high",
+      "dimension": "validity",
+      "target": {
+        "resourceType": "table",
+        "resourceIdentifier": "orders_extract"
+      },
+      "message": "Skipped - the PII scanner is disabled in this environment."
+    },
+    {
+      "id": "no_dup_rows_customers",
+      "type": "check",
+      "name": "No duplicate rows in customers",
+      "status": "pass",
+      "dimension": "uniqueness",
+      "target": {
+        "resourceType": "table",
+        "resourceIdentifier": "customers"
+      }
+    }
+  ]
+}

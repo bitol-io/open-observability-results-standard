@@ -21,7 +21,7 @@ An OORS document is **terminal by default**: without a `run` object, the documen
 A pipeline that has completed step 12 of 14 reports the step's observation and marks the document as an interim snapshot of a running execution. `source.runId` is required so consumers can correlate the documents of one run.
 
 ```yaml
-apiVersion: v0.2.2
+apiVersion: v0.8.0
 kind: ObservabilityResults
 id: 1c40b98e-5a7d-4d2e-9f31-8b6c2e0a4f77
 observedAt: "2026-07-07T20:15:51Z"
@@ -52,7 +52,7 @@ results:
 
 ```json
 {
-  "apiVersion": "v0.2.2",
+  "apiVersion": "v0.8.0",
   "kind": "ObservabilityResults",
   "id": "1c40b98e-5a7d-4d2e-9f31-8b6c2e0a4f77",
   "observedAt": "2026-07-07T20:15:51Z",
@@ -84,7 +84,7 @@ results:
 The same run's final document — `state: completed` (or simply no `run` object at all) — carries the full summary and supersedes every interim snapshot with the same `source.runId`.
 
 ```yaml
-apiVersion: v0.2.2
+apiVersion: v0.8.0
 kind: ObservabilityResults
 id: efa58843-12ec-418b-963d-40dda853f856
 observedAt: "2026-07-07T20:43:31Z"
