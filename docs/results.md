@@ -58,6 +58,7 @@ A result using every field — a failing `check` linked to a contract rule via `
       mustBe: 0
     unit: rows
   message: Multiple duplicate rows found in myTable!
+  tags: ['critical-path', 'uniqueness']
   customProperties:
     - property: checkEngine
       value: soda-core
@@ -85,6 +86,7 @@ A result using every field — a failing `check` linked to a contract rule via `
     "unit": "rows"
   },
   "message": "Multiple duplicate rows found in myTable!",
+  "tags": ["critical-path", "uniqueness"],
   "customProperties": [
     {
       "property": "checkEngine",
@@ -114,6 +116,7 @@ A result using every field — a failing `check` linked to a contract rule via `
 | `measure.threshold`         | object          | Threshold           | No       | The threshold criteria, e.g., `mustBe`, `mustBeLessThan` (following ODCS operator definitions).                                    | `{ "mustBe": 0 }`                        |
 | `measure.unit`              | string          | Unit                | No       | The unit of measurement, e.g., `rows`, `seconds`, `percent`.                                                                       | `rows`                                   |
 | `message`                   | string          | Message             | No       | A human-readable message providing additional context about the observation.                                                       | `Multiple duplicate rows found!`         |
+| `tags`                      | array           | Tags                | No       | A list of tags for categorizing the result. See [Tags](tags.md).                                                                    | `['critical-path']`                      |
 | `customProperties`          | array           | Custom Properties   | No       | A list of key/value pairs for custom properties. See [Custom & Other Properties](custom-other-properties.md).                       |                                          |
 
 ## Status values

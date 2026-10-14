@@ -9,10 +9,13 @@ This document tracks the history and evolution of the **Open Observability Resul
 # v0.8.0 - DRAFT
 
 * **Approves [RFC-0018](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/oors-v0.8.0/0018-oors.md) — Open Observability Results Standard**, the founding RFC, approved by the TSC on 2026-10-14. OORS is no longer an implementation of an open draft: it is now the formal consequence of an approved RFC.
+* **Adds** optional `contract.server` — the identifier of the server, as defined in the referenced contract (e.g., the `server` name in the ODCS `servers` section), against which the observations were made. A contract can be served on multiple servers (e.g., `production`, `dev`); this field records which one the results apply to. Non-breaking: the field is optional. Recreates the contribution made in [#8](https://github.com/bitol-io/open-observability-results-standard/pull/8) by [@jochenchrist](https://github.com/jochenchrist) on top of v0.8.0.
+* **Adds** `tags` — the shared Bitol structure for free-form classification labels (an array of strings), available at the top level and on each result. See the new [Tags](docs/tags.md) page. Non-breaking: the field is optional.
 * **Extends `results[].status`** to the five outcomes the RFC defines: `pass`, `fail`, `warn` (executed, breached a soft/warning threshold), `error` (could **not** be evaluated — verdict unknown; e.g. the query failed or the source was unreachable) and `skip` (intentionally not run). The schema previously permitted only `pass` and `fail`. `error` is deliberately distinct from `fail`: a failure is a known-bad verdict, an `error` is the *absence* of a verdict and must not be counted as a failure. **Non-breaking** — this widens an enum. See [Status values](docs/results.md#status-values).
 * Documents `severity` as **orthogonal** to `status`: `status` is the runtime outcome, `severity` is the definition-time importance of the check. The two compose — a `critical`-severity check with `status: error` is the loudest possible alert.
 * Default `apiVersion` raised to `v0.8.0`.
 * New `statuses` example (YAML + JSON) exercising all five outcomes, and the first negative-test fixtures under `tests/negative/` — invalid documents the schema must reject — wired into `scripts/validate-examples.sh`.
+* New [Tags](docs/tags.md) documentation page, mirroring the ODCS page; [Custom & Other Properties](docs/custom-other-properties.md) restructured to align with ODCS. The `full` example gains `contract.server` and `tags`.
 
 # v0.2.2 - DRAFT
 
