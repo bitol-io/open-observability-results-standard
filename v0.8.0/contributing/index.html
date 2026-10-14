@@ -1103,10 +1103,13 @@ SPDX-License-Identifier: Apache-2.0
 <h2 id="branching-and-merging">Branching and merging</h2>
 <p><code>main</code> is protected by a repository rule that requires changes to land through a <strong>pull request</strong> —
 direct pushes to <code>main</code> are rejected.</p>
-<p>Reviews are not required. Any TSC member with write access can merge their own pull request
-immediately; a second reviewer is welcome but never a gate. <code>main</code> cannot be force-pushed or deleted.</p>
-<p>The <code>validate-examples</code> workflow runs on every pull request and verifies the examples against the
-schema. It is advisory: a red run should be understood, not ignored.</p>
+<p>Reviews are not required. Any TSC member with write access can merge their own pull request as soon as
+the checks below are green; a second reviewer is welcome but never a gate. <code>main</code> cannot be
+force-pushed or deleted, and pull requests are merged with a <strong>merge commit</strong> — <code>main</code> does not accept
+squash or rebase merges.</p>
+<p>The <code>validate-examples</code> workflow runs on every pull request and verifies every example against the
+JSON schema, and asserts that the deliberately-invalid fixtures under <code>tests/negative/</code> are rejected.
+It is a <strong>required check</strong>: a pull request cannot be merged until it passes.</p>
 <p>Documentation is published automatically from <code>main</code> to
 <a href="https://bitol-io.github.io/open-observability-results-standard/">https://bitol-io.github.io/open-observability-results-standard/</a>.</p>
 
