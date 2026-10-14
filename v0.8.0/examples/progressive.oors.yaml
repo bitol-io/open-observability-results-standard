@@ -1,0 +1,27 @@
+apiVersion: v0.8.0
+kind: ObservabilityResults
+id: 1c40b98e-5a7d-4d2e-9f31-8b6c2e0a4f77
+observedAt: "2026-07-07T20:15:51Z"
+source:
+  process: imdb-silver
+  runId: silver-1783398037701
+run:
+  state: running
+  sequence: 12
+  progress:
+    current: 12
+    total: 14
+    unit: steps
+results:
+  - id: rows_title_alias
+    type: metric
+    name: title_alias
+    status: pass
+    dimension: volume
+    target:
+      resourceType: table
+      resourceIdentifier: title_alias
+    measure:
+      metric: rows_loaded
+      value: 58518276
+      unit: rows

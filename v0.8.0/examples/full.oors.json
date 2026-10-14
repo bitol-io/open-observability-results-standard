@@ -1,0 +1,97 @@
+{
+  "apiVersion": "v0.8.0",
+  "kind": "ObservabilityResults",
+  "id": "3d2b6e90-7a1c-4f5b-8e2d-1a9c4b6f0e23",
+  "observedAt": "2026-01-15T09:30:00Z",
+  "source": {
+    "process": "order-processor-dbt",
+    "runId": "build-4821",
+    "vendor": "soda"
+  },
+  "run": {
+    "state": "completed",
+    "sequence": 7,
+    "progress": {
+      "current": 6,
+      "total": 6,
+      "unit": "steps"
+    }
+  },
+  "contract": {
+    "contractId": "53581432-6c55-4ba2-a65f-72344a91553a",
+    "standard": "ODCS",
+    "version": "3.1.0"
+  },
+  "results": [
+    {
+      "id": "dup_rows_myTable",
+      "type": "check",
+      "name": "No duplicate rows",
+      "status": "fail",
+      "relatesTo": "schema/orders_tbl/quality/dq_no_duplicates",
+      "severity": "critical",
+      "dimension": "uniqueness",
+      "target": {
+        "resourceType": "table",
+        "resourceIdentifier": "myTable"
+      },
+      "measure": {
+        "metric": "rowCount",
+        "value": 3,
+        "threshold": {
+          "mustBe": 0
+        },
+        "unit": "rows"
+      },
+      "message": "Multiple duplicate rows found in myTable!",
+      "customProperties": [
+        {
+          "property": "checkEngine",
+          "value": "soda-core"
+        }
+      ]
+    },
+    {
+      "id": "freshness_myDataProduct",
+      "type": "metric",
+      "name": "Data should not be stale",
+      "status": "pass",
+      "relatesTo": "schema/orders_tbl/properties/updated_at",
+      "severity": "high",
+      "dimension": "timeliness",
+      "target": {
+        "resourceType": "dataset",
+        "resourceIdentifier": [
+          "myDataProduct.orders",
+          "myDataProduct.customers"
+        ]
+      },
+      "measure": {
+        "metric": "age",
+        "value": 42,
+        "threshold": {
+          "mustBeLessThan": 60
+        },
+        "unit": "minutes"
+      },
+      "message": "Data is fresh."
+    }
+  ],
+  "customProperties": [
+    {
+      "property": "environment",
+      "value": "production"
+    },
+    {
+      "property": "orchestrator",
+      "value": "airflow",
+      "description": "The scheduler that triggered this run.",
+      "id": "cp-orchestrator"
+    },
+    {
+      "property": "catalogId",
+      "value": "cat-987",
+      "vendor": "zeenea"
+    }
+  ]
+}
