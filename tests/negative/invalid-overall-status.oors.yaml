@@ -1,0 +1,19 @@
+# Copyright 2026 The Bitol Contributors
+# SPDX-License-Identifier: Apache-2.0
+#
+# NEGATIVE TEST - this document MUST fail schema validation.
+# Violation: the top-level `status: failed` is not one of the six permitted values
+# (pass, fail, warn, error, skip, unknown). See docs/fundamentals.md#overall-status.
+
+apiVersion: v0.8.1
+kind: ObservabilityResults
+id: 2e7d4b91-6c05-4f3a-9b18-5d0a7e3c6f42
+observedAt: "2026-10-14T06:00:00Z"
+source:
+  process: nightly-quality-suite
+status: failed
+results:
+  - id: no_dup_rows
+    type: check
+    name: No duplicate rows
+    status: fail
