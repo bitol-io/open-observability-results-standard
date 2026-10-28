@@ -2,8 +2,8 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 # NEGATIVE TEST - this document MUST fail schema validation.
-# Violation: `status: succeeded` is not one of the five permitted values
-# (pass, fail, warn, error, skip). See docs/results.md#status-values.
+# Violation: `status: succeeded` is not one of the six permitted values
+# (pass, fail, warn, error, skip, unknown). See docs/results.md#status-values.
 
 apiVersion: v0.8.0
 kind: ObservabilityResults

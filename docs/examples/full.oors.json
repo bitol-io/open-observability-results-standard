@@ -10,6 +10,7 @@
   },
   "run": {
     "state": "completed",
+    "startedAt": "2026-01-15T09:12:40Z",
     "sequence": 7,
     "progress": {
       "current": 6,
@@ -34,15 +35,18 @@
       "dimension": "uniqueness",
       "target": {
         "resourceType": "table",
-        "resourceIdentifier": "myTable"
+        "resourceIdentifier": "myTable",
+        "filter": "order_date >= '2026-01-01'"
       },
       "measure": {
-        "metric": "rowCount",
+        "metric": "duplicateValues",
         "value": 3,
         "threshold": {
           "mustBe": 0
         },
-        "unit": "rows"
+        "unit": "rows",
+        "rowCount": 1200,
+        "failedRowCount": 3
       },
       "message": "Multiple duplicate rows found in myTable!",
       "customProperties": [

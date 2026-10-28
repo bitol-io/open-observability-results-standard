@@ -55,7 +55,7 @@ results:
       resourceType: table
       resourceIdentifier: myTable
     measure:
-      metric: rowCount
+      metric: duplicateValues
       value: 3
       threshold:
         mustBe: 0

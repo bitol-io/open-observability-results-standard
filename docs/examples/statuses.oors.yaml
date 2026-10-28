@@ -16,7 +16,7 @@ results:
       resourceType: table
       resourceIdentifier: myTable
     measure:
-      metric: rowCount
+      metric: duplicateValues
       value: 3
       threshold:
         mustBe: 0
@@ -66,3 +66,12 @@ results:
     target:
       resourceType: table
       resourceIdentifier: customers
+  - id: positive_amounts_orders
+    type: check
+    name: Order amounts are positive
+    status: unknown
+    dimension: validity
+    target:
+      resourceType: column
+      resourceIdentifier: orders.amount
+    message: Relayed from another tool, whose status `partial` has no OORS equivalent.
