@@ -16,8 +16,8 @@
   "properties": {
     "apiVersion": {
       "type": "string",
-      "default": "v0.8.0",
-      "description": "Version of the OORS schema used. Indicates the version of the standard, e.g., `v0.8.0`."
+      "default": "v0.8.1",
+      "description": "Version of the OORS schema used. Indicates the version of the standard, e.g., `v0.8.1`."
     },
     "kind": {
       "type": "string",
@@ -137,6 +137,18 @@
       "items": {
         "$ref": "#/$defs/Result"
       }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "fail",
+        "warn",
+        "error",
+        "skip",
+        "unknown"
+      ],
+      "description": "Optional overall outcome of the observations in this document, so consumers do not need to aggregate `results` themselves. When present, it SHOULD equal the outcome derived from `results`: the first of `error`, `fail`, `warn`, `pass`, `skip` that occurs as a result status, or `unknown` when none does (including when `results` is empty). On an interim snapshot (`run.state: running`), it covers only the results reported so far."
     },
     "customProperties": {
       "$ref": "#/$defs/CustomProperties"

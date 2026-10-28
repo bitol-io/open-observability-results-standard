@@ -1,5 +1,5 @@
 {
-  "apiVersion": "v0.8.0",
+  "apiVersion": "v0.8.1",
   "kind": "ObservabilityResults",
   "id": "7b1e4c02-9d38-4a17-8f56-2c3b7e0d9a41",
   "observedAt": "2026-10-14T06:00:00Z",

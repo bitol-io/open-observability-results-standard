@@ -36,7 +36,7 @@ A reader-friendly version of the standard is published at
 ## Example
 
 ```yaml
-apiVersion: v0.8.0
+apiVersion: v0.8.1
 kind: ObservabilityResults
 id: 9f1c8a52-2b4e-4a6e-9d3e-7c2a1f0b4d11
 observedAt: "2025-12-25T17:00:00+01:00"

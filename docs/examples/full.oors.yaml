@@ -1,4 +1,4 @@
-apiVersion: v0.8.0
+apiVersion: v0.8.1
 kind: ObservabilityResults
 id: 3d2b6e90-7a1c-4f5b-8e2d-1a9c4b6f0e23
 observedAt: "2026-01-15T09:30:00Z"
@@ -62,6 +62,7 @@ results:
         mustBeLessThan: 60
       unit: minutes
     message: Data is fresh.
+status: fail
 tags: ['finance', 'sox']
 customProperties:
   - property: environment

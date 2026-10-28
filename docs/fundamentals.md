@@ -23,7 +23,7 @@ Any string value MAY contain `${VAR_NAME}` references resolved at runtime by too
 Only the required fields: the envelope, `source.process`, and one result.
 
 ```yaml
-apiVersion: v0.8.0
+apiVersion: v0.8.1
 kind: ObservabilityResults
 id: 9f1c8a52-2b4e-4a6e-9d3e-7c2a1f0b4d11
 observedAt: "2026-01-15T09:30:00Z"
@@ -38,7 +38,7 @@ results:
 
 ```json
 {
-  "apiVersion": "v0.8.0",
+  "apiVersion": "v0.8.1",
   "kind": "ObservabilityResults",
   "id": "9f1c8a52-2b4e-4a6e-9d3e-7c2a1f0b4d11",
   "observedAt": "2026-01-15T09:30:00Z",
@@ -58,10 +58,10 @@ results:
 
 ### Full
 
-A full envelope: `source` with all fields, a `run` lifecycle object, a `contract` reference (including the `server` it is served on), results, `tags`, and `customProperties`. (See [Results](results.md) for the result fields and [Run Lifecycle](run-lifecycle.md) for `run`.) The complete files are in [`examples/`](examples/README.md).
+A full envelope: `source` with all fields, a `run` lifecycle object, a `contract` reference (including the `server` it is served on), results, the overall `status`, `tags`, and `customProperties`. (See [Results](results.md) for the result fields and [Run Lifecycle](run-lifecycle.md) for `run`.) The complete files are in [`examples/`](examples/README.md).
 
 ```yaml
-apiVersion: v0.8.0
+apiVersion: v0.8.1
 kind: ObservabilityResults
 id: 3d2b6e90-7a1c-4f5b-8e2d-1a9c4b6f0e23
 observedAt: "2026-01-15T09:30:00Z"
@@ -85,6 +85,7 @@ results:
     type: metric
     name: Data should not be stale
     status: pass
+status: fail
 tags: ['finance', 'sox']
 customProperties:
   - property: environment
@@ -93,7 +94,7 @@ customProperties:
 
 ```json
 {
-  "apiVersion": "v0.8.0",
+  "apiVersion": "v0.8.1",
   "kind": "ObservabilityResults",
   "id": "3d2b6e90-7a1c-4f5b-8e2d-1a9c4b6f0e23",
   "observedAt": "2026-01-15T09:30:00Z",
@@ -113,6 +114,7 @@ customProperties:
     { "id": "dup_rows_myTable", "type": "check", "name": "No duplicate rows", "status": "fail" },
     { "id": "freshness_myDataProduct", "type": "metric", "name": "Data should not be stale", "status": "pass" }
   ],
+  "status": "fail",
   "tags": ["finance", "sox"],
   "customProperties": [
     { "property": "environment", "value": "production" }
@@ -124,7 +126,7 @@ customProperties:
 
 | Key                   | Type              | UX label          | Required | Description                                                                                                                | Example                                |
 | --------------------- | ----------------- | ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| `apiVersion`          | string            | API Version       | Yes      | Version of the OORS schema used.                                                                                          | `v0.8.0`                               |
+| `apiVersion`          | string            | API Version       | Yes      | Version of the OORS schema used.                                                                                          | `v0.8.1`                               |
 | `kind`                | string            | Kind              | Yes      | The type of OORS object. For OORS, always `ObservabilityResults`.                                                         | `ObservabilityResults`                 |
 | `id`                  | string (UUID)     | ID                | Yes      | A unique identifier (could be a UUID) identifying the observability results.                                              | `9f1c8a52-2b4e-4a6e-9d3e-7c2a1f0b4d11` |
 | `observedAt`          | string (ISO 8601) | Observed At       | Yes      | The moment in time when the observations were done (ISO 8601 format).                                                     | `2026-01-15T09:30:00Z`                 |
@@ -139,9 +141,26 @@ customProperties:
 | `contract.version`    | string            | Version           | No       | The version of the contract (not the standard).                                                                          | `3.1.0`                                |
 | `contract.server`     | string            | Server            | No       | The identifier of the server, as defined in the referenced contract (e.g., the `server` name in the ODCS `servers` section), against which the observations were made. A contract can be served on multiple servers; this field records which one the results apply to. | `production`                           |
 | `results`             | array             | Results           | Yes      | An array of results. Each entry is a [result](results.md) object (check or metric). May be empty when the run made no observations. |                                        |
+| `status`              | string            | Status            | No       | The overall outcome of the observations in this document, so consumers do not need to aggregate `results` themselves. See [Overall status](#overall-status). | `fail`                                 |
 | `tags`                | array             | Tags              | No       | A list of tags for categorizing the message. See [Tags](tags.md).                                                        | `['finance', 'sox']`                   |
 | `customProperties`    | array             | Custom Properties | No       | A list of key/value pairs for custom properties. See [Custom & Other Properties](custom-other-properties.md).             |                                        |
 
 > **Note:** When a `contract` is provided, all observations in `results` are expected to be based on the specifications defined in that contract. Observations not related to the contract should be sent in separate OORS messages (without the `contract` object).
 
 > **Note:** An OORS document is **terminal by default** — without a `run` object it is the authoritative record of the run that produced it. Long-running producers can opt in to progressive reporting with the optional `run` object; see [Run Lifecycle](run-lifecycle.md).
+
+## Overall status
+
+The optional top-level `status` takes the same values as [`results[].status`](results.md#status-values). It saves
+consumers from aggregating the results themselves, and lets a quality gate or a dashboard read one field. When present,
+it SHOULD equal the outcome derived from `results`, so the two never disagree:
+
+1. `error` if any result is `error` — part of the run could not be evaluated.
+2. Otherwise `fail` if any result is `fail`.
+3. Otherwise `warn` if any result is `warn`.
+4. Otherwise `pass` if any result is `pass`.
+5. Otherwise `skip` if any result is `skip`.
+6. Otherwise `unknown`, including when `results` is empty.
+
+Consumers that need the overall outcome of a document without `status` SHOULD derive it with the same rule. On an
+interim snapshot (`run.state: running`), `status` covers only the results reported so far and is not the run's outcome.

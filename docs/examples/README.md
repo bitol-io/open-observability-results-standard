@@ -10,7 +10,7 @@ SPDX-License-Identifier: Apache-2.0
 
 # Examples
 
-Complete OORS messages: a **minimal** example (only the required fields), a **full** example (every field), and a **progressive** example (an interim snapshot of a run still in progress — see [Run Lifecycle](../run-lifecycle.md)), and a **statuses** example (all six `results[].status` outcomes — see [Status values](../results.md#status-values)). Each is available in **YAML** and **JSON**, and validates against [`schema/oors-json-schema-v0.8.0.json`](../../schema/oors-json-schema-v0.8.0.json).
+Complete OORS messages: a **minimal** example (only the required fields), a **full** example (every field), and a **progressive** example (an interim snapshot of a run still in progress — see [Run Lifecycle](../run-lifecycle.md)), and a **statuses** example (all six `results[].status` outcomes — see [Status values](../results.md#status-values)). Each is available in **YAML** and **JSON**, and validates against [`schema/oors-json-schema-v0.8.1.json`](../../schema/oors-json-schema-v0.8.1.json).
 
 | Example | YAML | JSON |
 | ------- | ---- | ---- |

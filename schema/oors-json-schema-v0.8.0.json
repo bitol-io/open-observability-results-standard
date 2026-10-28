@@ -72,11 +72,6 @@
           ],
           "description": "The lifecycle state of the run this document reports on. `running`: interim snapshot, more documents will follow for this `source.runId`. `completed`: terminal, the run finished and this document is its authoritative record. `aborted`: terminal, the run ended before producing its full results."
         },
-        "startedAt": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Optional moment in time when the run started (ISO 8601 format). Together with `observedAt`, it gives the duration of the run."
-        },
         "sequence": {
           "type": "integer",
           "minimum": 0,
@@ -133,7 +128,8 @@
     },
     "results": {
       "type": "array",
-      "description": "An array of results. Each result object carries the details of a specific observation (check or metric). May be empty when the run made no observations, e.g. no checks were defined or all were filtered out.",
+      "minItems": 1,
+      "description": "An array of results (at least one). Each result object carries the details of a specific observation (check or metric).",
       "items": {
         "$ref": "#/$defs/Result"
       }
@@ -180,10 +176,9 @@
             "fail",
             "warn",
             "error",
-            "skip",
-            "unknown"
+            "skip"
           ],
-          "description": "The outcome of the observation: `pass` (executed, met expectation), `fail` (executed, breached a hard threshold), `warn` (executed, breached a soft/warning threshold), `error` (could not be evaluated - verdict unknown; e.g. the query failed or the source was unreachable), `skip` (intentionally not run), or `unknown` (the producer cannot tell the outcome; e.g. it relays a result from another tool whose status it does not recognize). `error` is distinct from `fail`: a failure is a known-bad verdict, an error is the absence of a verdict and must not be counted as a failure. `unknown` is distinct from `error`: nothing broke that needs fixing, and it must be counted neither as a pass nor as a failure."
+          "description": "The outcome of the observation: `pass` (executed, met expectation), `fail` (executed, breached a hard threshold), `warn` (executed, breached a soft/warning threshold), `error` (could not be evaluated - verdict unknown; e.g. the query failed or the source was unreachable), or `skip` (intentionally not run). `error` is distinct from `fail`: a failure is a known-bad verdict, an error is the absence of a verdict and must not be counted as a failure."
         },
         "relatesTo": {
           "type": "string",
@@ -215,10 +210,6 @@
                 "type": "string"
               },
               "description": "The identifier(s) of the resource, e.g., table name, column name, etc. May be a single string or an array of strings."
-            },
-            "filter": {
-              "type": "string",
-              "description": "Optional condition that restricted the observed data to a subset of the resource, e.g., a partition or a where clause such as `order_date >= '2026-10-01'`. When present, the result applies only to that subset, not to the whole resource."
             }
           }
         },
@@ -229,7 +220,7 @@
           "properties": {
             "metric": {
               "type": "string",
-              "description": "The name of the metric being measured, e.g., `rowCount`, `age`, `latency`, etc. For data quality metrics, use the ODCS library metric names where one applies: `rowCount`, `nullValues`, `missingValues`, `invalidValues`, `duplicateValues`."
+              "description": "The name of the metric being measured, e.g., `rowCount`, `age`, `latency`, etc."
             },
             "value": {
               "type": [
@@ -245,16 +236,6 @@
             "unit": {
               "type": "string",
               "description": "The unit of measurement, e.g., `rows`, `seconds`, `percent`, etc."
-            },
-            "rowCount": {
-              "type": "integer",
-              "minimum": 0,
-              "description": "Optional number of rows the observation evaluated."
-            },
-            "failedRowCount": {
-              "type": "integer",
-              "minimum": 0,
-              "description": "Optional number of evaluated rows that did not meet the expectation. Together with `rowCount`, it gives the share of failing rows, independent of the metric in `value`."
             }
           }
         },
