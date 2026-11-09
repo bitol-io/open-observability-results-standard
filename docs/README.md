@@ -17,7 +17,7 @@ An OORS message reports the *outcomes* of checks and metrics — pass/fail, meas
 
 > ## WORK IN PROGRESS — NOT READY FOR PRODUCTION
 >
-> OORS is a **draft standard** (v0.8.0), published early so the community can see it and shape it. It is
+> OORS is a **draft standard** (v0.8.1), published early so the community can see it and shape it. It is
 > **not** a released standard. Expect **breaking changes in every version until v1.0.0**, and incomplete
 > areas. Do not build production systems against it.
 

@@ -90,7 +90,7 @@ This section covers other properties you may find in an OORS message.
 ### Example
 
 ```yaml
-apiVersion: v0.8.0
+apiVersion: v0.8.1
 kind: ObservabilityResults
 ```
 

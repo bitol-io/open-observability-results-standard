@@ -6,6 +6,18 @@ image: "https://raw.githubusercontent.com/bitol-io/artwork/main/horizontal/color
 
 This document tracks the history and evolution of the **Open Observability Results Standard**.
 
+# v0.8.1 - DRAFT
+
+* **Adds** optional `results[].target.filter` — the condition (a partition or a where clause) that restricted the observed data to a subset of the resource. Without it, a result that covers one partition reads as covering the whole resource. Non-breaking: the field is optional.
+* **Adds** optional `results[].measure.rowCount` and `results[].measure.failedRowCount` — the number of rows evaluated and the number that did not meet the expectation, so consumers can compute the share of failing rows across tools, independent of the metric in `value`. Non-breaking: the fields are optional.
+* **Adds** optional `run.startedAt` — when the run started, so its duration is not lost. Non-breaking: the field is optional.
+* **Extends `results[].status`** with `unknown` — the producer cannot tell the outcome, e.g. it relays a result from another tool whose status it does not recognize. Distinct from `error` (the evaluation broke and needs fixing); like `skip`, it is counted neither as a pass nor as a failure. **Non-breaking** — this widens an enum. See [Status values](docs/results.md#status-values).
+* **Adds** optional top-level `status` — the overall outcome of the document, with the same values as `results[].status`, so consumers and quality gates can read one field instead of aggregating the results. When present, it SHOULD equal the outcome derived from `results` (the first of `error`, `fail`, `warn`, `pass`, `skip` that occurs, else `unknown`); consumers SHOULD derive it with the same rule when it is absent. See [Overall status](docs/fundamentals.md#overall-status). Non-breaking: the field is optional.
+* **Allows** an empty `results` array, for runs that made no observations (no checks defined, or all filtered out), instead of forcing producers to invent a placeholder result. `results` itself stays required. **Non-breaking** — this relaxes a constraint.
+* Recommends the ODCS library metric names (`rowCount`, `nullValues`, `missingValues`, `invalidValues`, `duplicateValues`) for `measure.metric`. The duplicate-row examples now use `duplicateValues` instead of `rowCount`.
+* Default `apiVersion` raised to `v0.8.1`. The v0.8.0 schema is unchanged.
+* The `full` example gains `target.filter`, `measure.rowCount`, `measure.failedRowCount`, `run.startedAt` and the top-level `status`; the `statuses` example gains an `unknown` result.
+
 # v0.8.0 - DRAFT
 
 * **Approves [RFC-0018](https://github.com/bitol-io/tsc/blob/main/rfcs/approved/oors-v0.8.0/0018-oors.md) — Open Observability Results Standard**, the founding RFC, approved by the TSC on 2026-10-14. OORS is no longer an implementation of an open draft: it is now the formal consequence of an approved RFC.

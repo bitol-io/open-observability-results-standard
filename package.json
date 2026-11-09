@@ -1,8 +1,8 @@
 {
   "name": "open-observability-results-standard",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Open Observability Results Standard (OORS) - A standard for exchanging data observability results",
-  "main": "schema/oors-json-schema-v0.8.0.json",
+  "main": "schema/oors-json-schema-v0.8.1.json",
   "scripts": {
     "validate": "./scripts/validate-examples.sh",
     "test": "./scripts/validate-examples.sh"

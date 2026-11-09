@@ -5,7 +5,7 @@
 # Violation: `tags` must be an array of strings. A bare string is not a valid
 # `tags` value. See docs/tags.md#structure.
 
-apiVersion: v0.8.0
+apiVersion: v0.8.1
 kind: ObservabilityResults
 id: 2f7a9c14-8e35-4d61-b902-6a4e7c1f3d58
 observedAt: "2026-10-14T06:00:00Z"

@@ -56,7 +56,7 @@ The same structure applies wherever `tags` is permitted.
 ## Example
 
 ```yaml
-apiVersion: v0.8.0
+apiVersion: v0.8.1
 kind: ObservabilityResults
 id: 9f1c8a52-2b4e-4a6e-9d3e-7c2a1f0b4d11
 observedAt: "2026-01-15T09:30:00Z"
