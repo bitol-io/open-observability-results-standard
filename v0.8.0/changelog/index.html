@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../img/Bitol_Logo_icon_color.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -31,10 +31,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -91,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#v080-draft" class="md-skip">
+        <a href="#v081-draft" class="md-skip">
           Skip to content
         </a>
       
@@ -1048,6 +1048,18 @@
 
 
 <p>This document tracks the history and evolution of the <strong>Open Observability Results Standard</strong>.</p>
+<h1 id="v081-draft">v0.8.1 - DRAFT</h1>
+<ul>
+<li><strong>Adds</strong> optional <code>results[].target.filter</code> — the condition (a partition or a where clause) that restricted the observed data to a subset of the resource. Without it, a result that covers one partition reads as covering the whole resource. Non-breaking: the field is optional.</li>
+<li><strong>Adds</strong> optional <code>results[].measure.rowCount</code> and <code>results[].measure.failedRowCount</code> — the number of rows evaluated and the number that did not meet the expectation, so consumers can compute the share of failing rows across tools, independent of the metric in <code>value</code>. Non-breaking: the fields are optional.</li>
+<li><strong>Adds</strong> optional <code>run.startedAt</code> — when the run started, so its duration is not lost. Non-breaking: the field is optional.</li>
+<li><strong>Extends <code>results[].status</code></strong> with <code>unknown</code> — the producer cannot tell the outcome, e.g. it relays a result from another tool whose status it does not recognize. Distinct from <code>error</code> (the evaluation broke and needs fixing); like <code>skip</code>, it is counted neither as a pass nor as a failure. <strong>Non-breaking</strong> — this widens an enum. See <a href="../results/#status-values">Status values</a>.</li>
+<li><strong>Adds</strong> optional top-level <code>status</code> — the overall outcome of the document, with the same values as <code>results[].status</code>, so consumers and quality gates can read one field instead of aggregating the results. When present, it SHOULD equal the outcome derived from <code>results</code> (the first of <code>error</code>, <code>fail</code>, <code>warn</code>, <code>pass</code>, <code>skip</code> that occurs, else <code>unknown</code>); consumers SHOULD derive it with the same rule when it is absent. See <a href="../fundamentals/#overall-status">Overall status</a>. Non-breaking: the field is optional.</li>
+<li><strong>Allows</strong> an empty <code>results</code> array, for runs that made no observations (no checks defined, or all filtered out), instead of forcing producers to invent a placeholder result. <code>results</code> itself stays required. <strong>Non-breaking</strong> — this relaxes a constraint.</li>
+<li>Recommends the ODCS library metric names (<code>rowCount</code>, <code>nullValues</code>, <code>missingValues</code>, <code>invalidValues</code>, <code>duplicateValues</code>) for <code>measure.metric</code>. The duplicate-row examples now use <code>duplicateValues</code> instead of <code>rowCount</code>.</li>
+<li>Default <code>apiVersion</code> raised to <code>v0.8.1</code>. The v0.8.0 schema is unchanged.</li>
+<li>The <code>full</code> example gains <code>target.filter</code>, <code>measure.rowCount</code>, <code>measure.failedRowCount</code>, <code>run.startedAt</code> and the top-level <code>status</code>; the <code>statuses</code> example gains an <code>unknown</code> result.</li>
+</ul>
 <h1 id="v080-draft">v0.8.0 - DRAFT</h1>
 <ul>
 <li><strong>Approves <a href="https://github.com/bitol-io/tsc/blob/main/rfcs/approved/oors-v0.8.0/0018-oors.md">RFC-0018</a> — Open Observability Results Standard</strong>, the founding RFC, approved by the TSC on 2026-10-14. OORS is no longer an implementation of an open draft: it is now the formal consequence of an approved RFC.</li>
@@ -1226,10 +1238,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.instant", "navigation.instant.prefetch", "navigation.tracking", "navigation.top", "navigation.footer", "navigation.path", "content.code.copy", "content.code.select", "content.tabs.link", "toc.integrate", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.instant", "navigation.instant.prefetch", "navigation.tracking", "navigation.top", "navigation.footer", "navigation.path", "content.code.copy", "content.code.select", "content.tabs.link", "toc.integrate", "toc.follow"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
         <script src="../js/open_in_new_tab.js"></script>
       

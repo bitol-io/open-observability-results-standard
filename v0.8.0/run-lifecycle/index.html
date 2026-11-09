@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../img/Bitol_Logo_icon_color.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -31,10 +31,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -1161,7 +1161,7 @@ SPDX-License-Identifier: Apache-2.0
 <h2 id="example">Example</h2>
 <h3 id="interim-snapshot">Interim snapshot</h3>
 <p>A pipeline that has completed step 12 of 14 reports the step's observation and marks the document as an interim snapshot of a running execution. <code>source.runId</code> is required so consumers can correlate the documents of one run.</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v0.8.0</span>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v0.8.1</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ObservabilityResults</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1c40b98e-5a7d-4d2e-9f31-8b6c2e0a4f77</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">observedAt</span><span class="p">:</span><span class="w"> </span><span class="s">"2026-07-07T20:15:51Z"</span>
@@ -1190,7 +1190,7 @@ SPDX-License-Identifier: Apache-2.0
 </span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">      </span><span class="nt">unit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rows</span>
 </span></code></pre></div>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v0.8.0"</span><span class="p">,</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"v0.8.1"</span><span class="p">,</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ObservabilityResults"</span><span class="p">,</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1c40b98e-5a7d-4d2e-9f31-8b6c2e0a4f77"</span><span class="p">,</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nt">"observedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-07-07T20:15:51Z"</span><span class="p">,</span>
@@ -1218,7 +1218,7 @@ SPDX-License-Identifier: Apache-2.0
 </span></code></pre></div>
 <h3 id="terminal-document">Terminal document</h3>
 <p>The same run's final document — <code>state: completed</code> (or simply no <code>run</code> object at all) — carries the full summary and supersedes every interim snapshot with the same <code>source.runId</code>.</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v0.8.0</span>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v0.8.1</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ObservabilityResults</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">efa58843-12ec-418b-963d-40dda853f856</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nt">observedAt</span><span class="p">:</span><span class="w"> </span><span class="s">"2026-07-07T20:43:31Z"</span>
@@ -1268,6 +1268,14 @@ SPDX-License-Identifier: Apache-2.0
 <td><code>running</code></td>
 </tr>
 <tr>
+<td><code>run.startedAt</code></td>
+<td>string (ISO 8601)</td>
+<td>Started At</td>
+<td>No</td>
+<td>The moment in time when the run started. Together with <code>observedAt</code>, it gives the duration of the run.</td>
+<td><code>2026-07-07T19:58:12Z</code></td>
+</tr>
+<tr>
 <td><code>run.sequence</code></td>
 <td>integer</td>
 <td>Sequence</td>
@@ -1313,7 +1321,7 @@ SPDX-License-Identifier: Apache-2.0
 <ol>
 <li><strong>Terminal by default.</strong> A document without a <code>run</code> object, or with <code>run.state</code> of <code>completed</code> or <code>aborted</code>, is <strong>terminal</strong>: the authoritative record for its <code>source.runId</code>. Every pre-v0.2.1 document is therefore already valid and terminal — nothing to migrate.</li>
 <li><strong>Interim snapshots.</strong> A document with <code>run.state: running</code> is a partial snapshot of a run still in progress. Consumers MUST NOT treat it as the run's outcome. <code>source.runId</code> is <strong>required</strong> on interim documents (enforced by the JSON schema) so they can be correlated.</li>
-<li><strong>Supersession.</strong> A terminal document supersedes all interim documents sharing its <code>source.runId</code>. The run's <em>outcome</em> is derived from the terminal document's <code>results</code> (its pass/fail checks) — <code>run.state</code> describes the lifecycle, not the quality outcome. <code>aborted</code> means only "no full summary is coming"; producers SHOULD still include a failing <code>check</code> describing why when they can.</li>
+<li><strong>Supersession.</strong> A terminal document supersedes all interim documents sharing its <code>source.runId</code>. The run's <em>outcome</em> is the terminal document's top-level <code>status</code>, or, when absent, derived from its <code>results</code> by the rule in <a href="../fundamentals/#overall-status">Overall status</a> — <code>run.state</code> describes the lifecycle, not the quality outcome. <code>aborted</code> means only "no full summary is coming"; producers SHOULD still include a failing <code>check</code> describing why when they can.</li>
 <li><strong>Observations stand alone.</strong> Each result in an interim document is a real observation that individually passed or failed — <code>results[].status</code> keeps its exact meaning. No new status values are introduced.</li>
 <li><strong>Ordering.</strong> Consumers SHOULD order a run's documents by <code>run.sequence</code> when present, falling back to <code>observedAt</code>. Producers SHOULD make <code>sequence</code> strictly increasing per <code>runId</code>.</li>
 </ol>
@@ -1458,10 +1466,10 @@ SPDX-License-Identifier: Apache-2.0
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.instant", "navigation.instant.prefetch", "navigation.tracking", "navigation.top", "navigation.footer", "navigation.path", "content.code.copy", "content.code.select", "content.tabs.link", "toc.integrate", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.instant", "navigation.instant.prefetch", "navigation.tracking", "navigation.top", "navigation.footer", "navigation.path", "content.code.copy", "content.code.select", "content.tabs.link", "toc.integrate", "toc.follow"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
         <script src="../js/open_in_new_tab.js"></script>
       
