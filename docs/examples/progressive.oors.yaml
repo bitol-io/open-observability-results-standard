@@ -7,7 +7,6 @@ source:
   runId: silver-1783398037701
 run:
   state: running
-  sequence: 12
   progress:
     current: 12
     total: 14

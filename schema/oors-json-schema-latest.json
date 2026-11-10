@@ -77,11 +77,6 @@
           "format": "date-time",
           "description": "Optional moment in time when the run started (ISO 8601 format). Together with `observedAt`, it gives the duration of the run."
         },
-        "sequence": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "Optional monotonically increasing ordinal of this document within the run (per `source.runId`). Consumers SHOULD order documents by `sequence` when present, falling back to `observedAt`."
-        },
         "progress": {
           "type": "object",
           "additionalProperties": false,
