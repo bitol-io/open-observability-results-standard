@@ -8,6 +8,7 @@ This document tracks the history and evolution of the **Open Observability Resul
 
 # v0.8.1 - DRAFT
 
+* **Removes** the earlier (v0.2.1) added `run.sequence` field, as it was deemed not needed anymore (during WG discussions early November 2026) and also difficult to use when checks are running in parallel.
 * **Adds** optional `results[].target.filter` — the condition (a partition or a where clause) that restricted the observed data to a subset of the resource. Without it, a result that covers one partition reads as covering the whole resource. Non-breaking: the field is optional.
 * **Adds** optional `results[].measure.rowCount` and `results[].measure.failedRowCount` — the number of rows evaluated and the number that did not meet the expectation, so consumers can compute the share of failing rows across tools, independent of the metric in `value`. Non-breaking: the fields are optional.
 * **Adds** optional `run.startedAt` — when the run started, so its duration is not lost. Non-breaking: the field is optional.
